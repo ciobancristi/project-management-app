@@ -1,0 +1,17 @@
+<article class="col-xs-6">
+    <header>
+        <h4>My Projects</h4>
+    </header>
+    <section>
+        <div class="well" *ngFor="let project of projects">
+            <ul class="list-group" (click)="goToProject(project.id)">
+                <li class="list-group-item">
+                    <label class="label label-default">Name:</label> {{project.name}}
+                </li>
+                <li class="list-group-item">
+                    <label class="label label-default">Status:</label> {{project.status.name}}
+                </li>
+            </ul>
+        </div>
+    </section>
+</article>
