@@ -1,4 +1,4 @@
 export class NameValueItem {
-    id:number;
+    _id:string;
     name:string;
 };

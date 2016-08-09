@@ -7,10 +7,10 @@ export class Task extends NameValueItem{
     comments: string;
     estimation: number;
     duration: number;
-    created: string;
-    started: string;
-    finished: string;
-    deadline: string;
+    created: Date;
+    started: Date;
+    finished: Date;
+    deadline: Date;
     status: Status;
     priority: Priority;
 };

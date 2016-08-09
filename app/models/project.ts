@@ -4,12 +4,12 @@ import { Task } from './task';
 import { NameValueItem } from './nameValueItem';
 
 export class Project extends NameValueItem{
-    created: string;
+    created: Date;
     finished: boolean;
     description: string;
     estimation: number;
     revenue: number;
-    monetaryUnit: MonetaryUnit;
+    currency: MonetaryUnit;
     status: Status;
     tasks: Task[]
 }

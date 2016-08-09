@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var project_service_1 = require('./projects/project.service');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -18,7 +19,10 @@ var AppComponent = (function () {
             selector: 'my-app',
             templateUrl: 'app/app.component.html',
             styleUrls: ['app/app.component.css'],
-            directives: [router_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES],
+            providers: [
+                project_service_1.ProjectService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

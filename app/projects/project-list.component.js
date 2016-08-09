@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var mock_service_1 = require('../mock.service');
+var project_service_1 = require('./project.service');
 var ProjectListComponent = (function () {
     function ProjectListComponent(mockService, router) {
         this.mockService = mockService;
@@ -18,7 +18,7 @@ var ProjectListComponent = (function () {
     }
     ProjectListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.mockService.getProjects()
+        this.mockService.getAllProjects()
             .then(function (p) { return _this.projects = p; });
     };
     ProjectListComponent.prototype.goToProject = function (projectId) {
@@ -30,9 +30,9 @@ var ProjectListComponent = (function () {
             moduleId: module.id,
             selector: 'project-list',
             templateUrl: 'project-list.component.html',
-            providers: [mock_service_1.MockService]
+            providers: [project_service_1.ProjectService]
         }), 
-        __metadata('design:paramtypes', [mock_service_1.MockService, router_1.Router])
+        __metadata('design:paramtypes', [project_service_1.ProjectService, router_1.Router])
     ], ProjectListComponent);
     return ProjectListComponent;
 }());

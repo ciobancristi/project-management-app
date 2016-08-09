@@ -9,44 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var data_service_1 = require('../data.service');
 var ClientsComponent = (function () {
-    function ClientsComponent(dataService) {
-        this.dataService = dataService;
+    function ClientsComponent() {
     }
-    ClientsComponent.prototype.ngOnInit = function () {
-        this.dataService.initDB();
-        this.bindData();
-        this.inp = {
-            _id: '', field3: '', field2: ''
-        };
-    };
-    ClientsComponent.prototype.bindData = function () {
-        var _this = this;
-        this.dataService.getAllData()
-            .then(function (d) {
-            _this.data = d;
-        });
-    };
-    ClientsComponent.prototype.save = function () {
-        var _this = this;
-        if (this.inp) {
-            this.dataService.add(this.inp)
-                .then(function (res) {
-                _this.bindData();
-            }, function (err) {
-                console.log(err);
-            });
-        }
-    };
+    ClientsComponent.prototype.ngOnInit = function () { };
     ClientsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'clients',
             templateUrl: 'clients.component.html',
-            providers: [data_service_1.DataService]
+            providers: []
         }), 
-        __metadata('design:paramtypes', [data_service_1.DataService])
+        __metadata('design:paramtypes', [])
     ], ClientsComponent);
     return ClientsComponent;
 }());

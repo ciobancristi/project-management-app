@@ -10,34 +10,73 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var mock_service_1 = require('../mock.service');
+var project_service_1 = require('./project.service');
+var models_1 = require('../models/models');
 var ProjectDetailComponent = (function () {
-    function ProjectDetailComponent(route, router, service) {
+    function ProjectDetailComponent(route, router, projectService) {
         this.route = route;
         this.router = router;
-        this.service = service;
+        this.projectService = projectService;
     }
     ProjectDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
+        var id;
         this.sub = this.route.params.subscribe(function (params) {
             var id = +params['id'];
-            _this.service.getProject(id)
-                .then(function (p) { return _this.project = p; });
-            _this.service.getStatuses().then(function (s) { return _this.statuses = s; });
-            _this.service.getMonetaryUnits().then(function (m) { return _this.currencies = m; });
+            if (id) {
+                _this.projectService.getProject(id)
+                    .then(function (project) { _this.project = project; console.log(project); })
+                    .catch(function (err) { return console.error(err); });
+            }
+            else {
+                _this.project = new models_1.Project();
+            }
         });
+        //this.service.getStatuses().then(s => this.statuses = s);
+        //this.service.getMonetaryUnits().then(m => this.currencies = m);
+        //TODO: get data from service
+        this.statuses = [
+            {
+                _id: '1', name: 'In Progress'
+            },
+            {
+                _id: '2', name: 'Finished'
+            }
+        ];
+        this.currencies = [
+            {
+                _id: '1', name: 'USD'
+            },
+            {
+                _id: '2', name: 'RON'
+            },
+            {
+                _id: '3', name: 'EUR'
+            }
+        ];
     };
     ProjectDetailComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();
+    };
+    ProjectDetailComponent.prototype.isNewProject = function () {
+        return !this.project._id;
+    };
+    ProjectDetailComponent.prototype.goToProjects = function () {
+        this.router.navigate(['/projects']);
+    };
+    ProjectDetailComponent.prototype.addProject = function () {
+    };
+    ProjectDetailComponent.prototype.isValidProject = function (project) {
+        return project;
     };
     ProjectDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'project-detail',
             templateUrl: 'project-detail.component.html',
-            providers: [mock_service_1.MockService]
+            providers: [project_service_1.ProjectService]
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, mock_service_1.MockService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, project_service_1.ProjectService])
     ], ProjectDetailComponent);
     return ProjectDetailComponent;
 }());

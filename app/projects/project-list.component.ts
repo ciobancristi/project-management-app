@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MockService } from '../mock.service';
+import { ProjectService } from './project.service';
 import { Project } from '../models/models';
 
 @Component({
     moduleId: module.id,
     selector: 'project-list',
     templateUrl: 'project-list.component.html',
-    providers: [MockService]
+    providers: [ProjectService]
 })
 export class ProjectListComponent implements OnInit {
     projects: Project[];
     
     constructor(
-        private mockService: MockService,
+        private mockService: ProjectService,
         private router: Router) {
     }
 
     ngOnInit() { 
-        this.mockService.getProjects()
+        this.mockService.getAllProjects()
             .then(p => this.projects = p);
     }
 
