@@ -5,12 +5,12 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var nameValueItem_1 = require('./nameValueItem');
-var MonetaryUnit = (function (_super) {
-    __extends(MonetaryUnit, _super);
-    function MonetaryUnit() {
+var Currency = (function (_super) {
+    __extends(Currency, _super);
+    function Currency() {
         _super.apply(this, arguments);
     }
-    return MonetaryUnit;
+    return Currency;
 }(nameValueItem_1.NameValueItem));
-exports.MonetaryUnit = MonetaryUnit;
-//# sourceMappingURL=monetaryUnit.js.map
+exports.Currency = Currency;
+//# sourceMappingURL=currency.js.map

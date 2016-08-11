@@ -1,5 +1,5 @@
 import {Status} from './status';
-import { MonetaryUnit } from "./monetaryUnit";
+import { Currency } from "./currency";
 import { Task } from './task';
 import { NameValueItem } from './nameValueItem';
 
@@ -9,7 +9,7 @@ export class Project extends NameValueItem{
     description: string;
     estimation: number;
     revenue: number;
-    currency: MonetaryUnit;
+    currency: Currency;
     status: Status;
     tasks: Task[]
 }

@@ -1,4 +1,4 @@
-export { MonetaryUnit} from './monetaryUnit';
+export { Currency } from './currency';
 export { Project } from "./project";
 export { Task } from "./task";
 export { Client } from "./client";

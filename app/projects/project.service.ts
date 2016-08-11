@@ -13,22 +13,22 @@ export class ProjectService {
         this._db = new PouchDB('projects');
     }
 
-    addProject(project: Project) {
+    add(project: Project) {
         if(!project._id) {
             project._id = this.createId();
         }
         return this._db.put(project);
     }
 
-    deleteProject(projectId: any) {
+    delete(projectId: any) {
         //TODO: implement
     }
 
-    updateProject(project: Project) {
+    update(project: Project) {
         return this._db.put(project);
     }
 
-    getProject(projectId: any) {
+    get(projectId: any) {
         if (!this._projects) {
             return this._db.get(projectId);
         } else {
@@ -37,7 +37,7 @@ export class ProjectService {
         }
     }
 
-    getAllProjects() {
+    getAll() {
         if (!this._projects) {
             return this._db.allDocs({ include_docs: true })
                 .then((docs: any) => {

@@ -1,4 +1,4 @@
 import { NameValueItem } from './nameValueItem';
 
-export class MonetaryUnit extends NameValueItem{
+export class Currency extends NameValueItem{
 }

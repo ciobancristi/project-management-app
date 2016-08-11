@@ -35,19 +35,19 @@ var ProjectService = (function () {
         };
         this._db = new PouchDB('projects');
     }
-    ProjectService.prototype.addProject = function (project) {
+    ProjectService.prototype.add = function (project) {
         if (!project._id) {
             project._id = this.createId();
         }
         return this._db.put(project);
     };
-    ProjectService.prototype.deleteProject = function (projectId) {
+    ProjectService.prototype.delete = function (projectId) {
         //TODO: implement
     };
-    ProjectService.prototype.updateProject = function (project) {
+    ProjectService.prototype.update = function (project) {
         return this._db.put(project);
     };
-    ProjectService.prototype.getProject = function (projectId) {
+    ProjectService.prototype.get = function (projectId) {
         if (!this._projects) {
             return this._db.get(projectId);
         }
@@ -56,7 +56,7 @@ var ProjectService = (function () {
                 .find(function (p) { return p._id === projectId; }));
         }
     };
-    ProjectService.prototype.getAllProjects = function () {
+    ProjectService.prototype.getAll = function () {
         var _this = this;
         if (!this._projects) {
             return this._db.allDocs({ include_docs: true })

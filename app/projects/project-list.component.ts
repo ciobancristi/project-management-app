@@ -18,7 +18,7 @@ export class ProjectListComponent implements OnInit {
     }
 
     ngOnInit() { 
-        this.mockService.getAllProjects()
+        this.mockService.getAll()
             .then((p: Project[]) => this.projects = p);
     }
 

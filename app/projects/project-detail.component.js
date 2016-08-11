@@ -24,7 +24,7 @@ var ProjectDetailComponent = (function () {
         this.sub = this.route.params.subscribe(function (params) {
             var id = +params['id'];
             if (id) {
-                _this.projectService.getProject(id)
+                _this.projectService.get(id)
                     .then(function (project) { _this.project = project; console.log(project); })
                     .catch(function (err) { return console.error(err); });
             }
@@ -65,6 +65,8 @@ var ProjectDetailComponent = (function () {
         this.router.navigate(['/projects']);
     };
     ProjectDetailComponent.prototype.addProject = function () {
+        this.projectService.add(this.project)
+            .then(function (res) { console.log(res); }, function (err) { console.error(err); });
     };
     ProjectDetailComponent.prototype.isValidProject = function (project) {
         return project;

@@ -1,6 +1,6 @@
 "use strict";
-var monetaryUnit_1 = require('./monetaryUnit');
-exports.MonetaryUnit = monetaryUnit_1.MonetaryUnit;
+var currency_1 = require('./currency');
+exports.Currency = currency_1.Currency;
 var project_1 = require("./project");
 exports.Project = project_1.Project;
 var task_1 = require("./task");

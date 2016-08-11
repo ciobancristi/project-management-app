@@ -25,7 +25,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         this.sub = this.route.params.subscribe(params => {
             let id = +params['id'];
             if (id) {
-                this.projectService.getProject(id)
+                this.projectService.get(id)
                     .then((project:Project) => { this.project = project; console.log(project) })
                     .catch((err: any) => console.error(err));
             } else {
@@ -70,7 +70,9 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     }
 
     addProject() {
-
+        this.projectService.add(this.project)
+            .then((res:any)=>{ console.log(res) }
+            , (err:any) => {console.error(err);})
     }
 
     private isValidProject(project: Project) {

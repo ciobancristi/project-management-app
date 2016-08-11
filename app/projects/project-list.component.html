@@ -1,21 +1,27 @@
+<style>
+    .pointer{
+        cursor: pointer
+    }
+</style>
+
 <div class="row">
     <section>
         <header>
             <h4>My Projects</h4>
         </header>
-        <div class="">
-            <p>Projects <span class="badge">{{projects ? projects.length: 0}}</span></p>
+        <div class="container">
+            <p class="active">Projects <span class="badge">{{projects ? projects.length: 0}}</span></p>
         </div>
     </section>
     <article class="col-xs-6">
         <section>
-            <div class="well" *ngFor="let project of projects">
-                <ul class="list-group" (click)="goToProject(project.id)">
+            <div class="well pointer" *ngFor="let project of projects">
+                <ul class="list-group" (click)="goToProject(project._id)">
                     <li class="list-group-item">
                         <label class="label label-default">Name:</label> {{project.name}}
                     </li>
                     <li class="list-group-item">
-                        <label class="label label-default">Status:</label> {{project.status.name}}
+                        <label class="label label-primary">Status:</label> {{project.status.name}}
                     </li>
                 </ul>
             </div>

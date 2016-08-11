@@ -18,7 +18,7 @@ var ProjectListComponent = (function () {
     }
     ProjectListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.mockService.getAllProjects()
+        this.mockService.getAll()
             .then(function (p) { return _this.projects = p; });
     };
     ProjectListComponent.prototype.goToProject = function (projectId) {
