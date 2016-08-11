@@ -19,11 +19,11 @@ export class ProjectListComponent implements OnInit {
 
     ngOnInit() { 
         this.mockService.getAllProjects()
-            .then(p => this.projects = p);
+            .then((p: Project[]) => this.projects = p);
     }
 
     goToProject(projectId: number){
-        let link = ['/project', projectId];
+        let link = ['/projects', projectId];
         this.router.navigate(link);
     }
 }

@@ -21,12 +21,12 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         private projectService: ProjectService) { }
 
     ngOnInit() {
-        let id
+        let id:number;
         this.sub = this.route.params.subscribe(params => {
             let id = +params['id'];
             if (id) {
                 this.projectService.getProject(id)
-                    .then((project) => { this.project = project; console.log(project) })
+                    .then((project:Project) => { this.project = project; console.log(project) })
                     .catch((err: any) => console.error(err));
             } else {
                 this.project = new Project();

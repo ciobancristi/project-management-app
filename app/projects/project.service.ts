@@ -5,8 +5,8 @@ import { Project } from '../models/models';
 //TODO: add logger!!
 @Injectable()
 export class ProjectService {
-    private _db;
-    private _projects;
+    private _db: any;
+    private _projects: Project[];
 
     //TODO: make _db injectable
     constructor() {
@@ -40,8 +40,8 @@ export class ProjectService {
     getAllProjects() {
         if (!this._projects) {
             return this._db.allDocs({ include_docs: true })
-                .then(docs => {
-                    this._projects = docs.rows.map(row => {
+                .then((docs: any) => {
+                    this._projects = docs.rows.map((row:any) => {
                         row.doc.created = new Date(row.doc.created);
                         return row.doc;
                     });

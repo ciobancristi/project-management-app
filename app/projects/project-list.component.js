@@ -22,7 +22,7 @@ var ProjectListComponent = (function () {
             .then(function (p) { return _this.projects = p; });
     };
     ProjectListComponent.prototype.goToProject = function (projectId) {
-        var link = ['/project', projectId];
+        var link = ['/projects', projectId];
         this.router.navigate(link);
     };
     ProjectListComponent = __decorate([
