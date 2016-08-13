@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from './project.service';
-import { Project, Status, MonetaryUnit } from '../models/models'
+import { Project, Status, Currency } from '../models/models'
 
 @Component({
     moduleId: module.id,
@@ -13,7 +13,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     private sub: any;
     private project: Project;
     private statuses: Status[];
-    private currencies: MonetaryUnit[];
+    private currencies: Currency[];
 
     constructor(
         private route: ActivatedRoute,
@@ -21,12 +21,14 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         private projectService: ProjectService) { }
 
     ngOnInit() {
-        let id:number;
+        let id: number;44
+
+        
         this.sub = this.route.params.subscribe(params => {
-            let id = +params['id'];
+            let id = params['id'];
             if (id) {
                 this.projectService.get(id)
-                    .then((project:Project) => { this.project = project; console.log(project) })
+                    .then((project: Project) => { this.project = project; console.log(project) })
                     .catch((err: any) => console.error(err));
             } else {
                 this.project = new Project();
@@ -71,8 +73,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
 
     addProject() {
         this.projectService.add(this.project)
-            .then((res:any)=>{ console.log(res) }
-            , (err:any) => {console.error(err);})
+            .then((res: any) => { console.log(res) }
+            , (err: any) => { console.error(err); })
     }
 
     private isValidProject(project: Project) {

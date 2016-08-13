@@ -9,20 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ClientsComponent = (function () {
-    function ClientsComponent() {
+var ClientComponent = (function () {
+    function ClientComponent() {
     }
-    ClientsComponent.prototype.ngOnInit = function () { };
-    ClientsComponent = __decorate([
+    ClientComponent.prototype.ngOnInit = function () { };
+    ClientComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'clients',
-            templateUrl: 'clients.component.html',
+            templateUrl: 'client.component.html',
             providers: []
         }), 
         __metadata('design:paramtypes', [])
-    ], ClientsComponent);
-    return ClientsComponent;
+    ], ClientComponent);
+    return ClientComponent;
 }());
-exports.ClientsComponent = ClientsComponent;
-//# sourceMappingURL=clients.component.js.map
+exports.ClientComponent = ClientComponent;
+//# sourceMappingURL=client.component.js.map

@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     moduleId: module.id,
     selector: 'clients',
-    templateUrl: 'clients.component.html',
+    templateUrl: 'client.component.html',
     providers: []
 })
-export class ClientsComponent implements OnInit {
+export class ClientComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {}

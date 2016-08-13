@@ -21,8 +21,9 @@ var ProjectDetailComponent = (function () {
     ProjectDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         var id;
+        44;
         this.sub = this.route.params.subscribe(function (params) {
-            var id = +params['id'];
+            var id = params['id'];
             if (id) {
                 _this.projectService.get(id)
                     .then(function (project) { _this.project = project; console.log(project); })

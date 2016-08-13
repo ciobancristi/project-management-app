@@ -51,7 +51,7 @@
                             "estimation": 4,
                             "created": "2015/05/02",
                             "started": "2015-05-02T18:25:43.511Z",
-                            "finished":"2015-05-12T18:25:43.511Z",
+                            "finished": "2015-05-12T18:25:43.511Z",
                             "priority": {
                                 "id": 2,
                                 "name": "Major"
@@ -89,5 +89,21 @@
             "id": 1,
             "name": "USD"
         }
-    ]
+    ],
+    "proj":{
+        "_id": "project_1470942681605",
+        "name": "test 34",
+        "status": {
+            "_id": "1",
+            "name": "In Progress"
+        },
+        "description": "QQQQ",
+        "estimation": 43,
+        "revenue": 12,
+        "monetaryUnit": {
+            "_id": "3",
+            "name": "EUR"
+        },
+        "_rev": "1-32189c8696e8cc8bb9de68827612c493"
+    }
 }
