@@ -9,18 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var ClientComponent = (function () {
-    function ClientComponent() {
+var shared_module_1 = require('../shared/shared.module');
+var admin_routing_1 = require('./admin.routing');
+var admin_component_1 = require('./admin.component');
+var AdminModule = (function () {
+    function AdminModule() {
     }
-    ClientComponent.prototype.ngOnInit = function () { };
-    ClientComponent = __decorate([
-        core_1.Component({
-            templateUrl: 'client.component.html',
-            providers: []
+    AdminModule = __decorate([
+        core_1.NgModule({
+            imports: [admin_routing_1.routing, shared_module_1.SharedModule],
+            declarations: [admin_component_1.AdminComponent],
+            exports: [admin_component_1.AdminComponent]
         }), 
         __metadata('design:paramtypes', [])
-    ], ClientComponent);
-    return ClientComponent;
+    ], AdminModule);
+    return AdminModule;
 }());
-exports.ClientComponent = ClientComponent;
-//# sourceMappingURL=client.component.js.map
+exports.AdminModule = AdminModule;
+//# sourceMappingURL=admin.module.js.map
