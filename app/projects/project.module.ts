@@ -10,12 +10,10 @@ import { ProjectDetailComponent } from './project-detail.component';
 import { ProjectComponent } from './project.component';
 
 @NgModule({
-    imports: [ routing, SharedModule ],
-    providers: [ ProjectService ],
-    declarations: [
-        ProjectComponent, ProjectDetailComponent, ProjectListComponent
-    ]
+    imports: [routing, SharedModule],
+    declarations: [ProjectComponent, ProjectDetailComponent, ProjectListComponent],
+    providers: [ProjectService]
 })
 
-export default class ProjectModule {}
+export class ProjectModule { }
 

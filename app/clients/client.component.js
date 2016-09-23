@@ -15,8 +15,9 @@ var ClientComponent = (function () {
     ClientComponent.prototype.ngOnInit = function () { };
     ClientComponent = __decorate([
         core_1.Component({
-            templateUrl: 'client.component.html',
-            providers: []
+            moduleId: module.id,
+            selector: 'client',
+            templateUrl: 'client.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], ClientComponent);

@@ -21,15 +21,12 @@ var ProjectModule = (function () {
     ProjectModule = __decorate([
         core_1.NgModule({
             imports: [project_routing_1.routing, shared_module_1.SharedModule],
-            providers: [project_service_1.ProjectService],
-            declarations: [
-                project_component_1.ProjectComponent, project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent
-            ]
+            declarations: [project_component_1.ProjectComponent, project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
+            providers: [project_service_1.ProjectService]
         }), 
         __metadata('design:paramtypes', [])
     ], ProjectModule);
     return ProjectModule;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = ProjectModule;
+exports.ProjectModule = ProjectModule;
 //# sourceMappingURL=project.module.js.map

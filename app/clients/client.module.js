@@ -24,6 +24,5 @@ var ClientModule = (function () {
     ], ClientModule);
     return ClientModule;
 }());
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = ClientModule;
+exports.ClientModule = ClientModule;
 //# sourceMappingURL=client.module.js.map

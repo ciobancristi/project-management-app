@@ -1,9 +1,8 @@
-import { Routes, RouterModule } from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { ClientComponent } from './client.component';
 
-export const routes: Routes = [
+export const routing: ModuleWithProviders = RouterModule.forChild([
     { path: '', component: ClientComponent },
-];
-
-export const routing = RouterModule.forChild(routes);
+]);

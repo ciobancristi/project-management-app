@@ -1,3 +1,4 @@
+import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProjectComponent } from './project.component';
@@ -9,10 +10,10 @@ export const routes: Routes = [
         path: '',
         component: ProjectComponent,
         children: [
-            { path: '', component: ProjectListComponent},
-            { path: ':id', component: ProjectDetailComponent}
+            { path: '', component: ProjectListComponent },
+            { path: ':id', component: ProjectDetailComponent }
         ]
     }
 ];
 
-export const routing = RouterModule.forChild(routes);
+export const routing: ModuleWithProviders = RouterModule.forChild(routes);
