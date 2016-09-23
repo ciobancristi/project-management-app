@@ -74,9 +74,6 @@ var ProjectDetailComponent = (function () {
         })
             .catch(function (err) { console.error(err); });
     };
-    ProjectDetailComponent.prototype.isValid = function (project) {
-        return project;
-    };
     ProjectDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

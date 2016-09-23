@@ -11,19 +11,18 @@ import { Project } from '../models/models';
 })
 export class ProjectListComponent implements OnInit {
     projects: Project[];
-    
+
     constructor(
-        private mockService: ProjectService,
+        private projectService: ProjectService,
         private router: Router) {
     }
 
-    ngOnInit() { 
-        this.mockService.getAll()
+    ngOnInit() {
+        this.projectService.getAll()
             .then((p: Project[]) => this.projects = p);
     }
 
-    goToProject(projectId: number){
-        let link = ['/projects', projectId];
-        this.router.navigate(link);
+    goToProject(projectId: number) {
+        this.router.navigate(['/projects', projectId]);
     }
 }

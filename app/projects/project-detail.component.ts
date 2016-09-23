@@ -80,8 +80,4 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
             })
             .catch((err: any) => { console.error(err); });
     }
-
-    private isValid(project: Project) {
-        return project;
-    }
 }

@@ -12,18 +12,17 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var project_service_1 = require('./project.service');
 var ProjectListComponent = (function () {
-    function ProjectListComponent(mockService, router) {
-        this.mockService = mockService;
+    function ProjectListComponent(projectService, router) {
+        this.projectService = projectService;
         this.router = router;
     }
     ProjectListComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.mockService.getAll()
+        this.projectService.getAll()
             .then(function (p) { return _this.projects = p; });
     };
     ProjectListComponent.prototype.goToProject = function (projectId) {
-        var link = ['/projects', projectId];
-        this.router.navigate(link);
+        this.router.navigate(['/projects', projectId]);
     };
     ProjectListComponent = __decorate([
         core_1.Component({
