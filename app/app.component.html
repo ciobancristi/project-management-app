@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li><a routerLink="dashboard" routerLinkActive="active">My Dashboard</a></li>
-                    <li><a routerLink="projects" routerLinkActive="active">Projects</a></li>
+                    <li><a routerLink="projects" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Projects</a></li>
                     <li><a routerLink="clients" routerLinkActive="active">Clients</a></li>
                     <li><a routerLink="admin" routerLinkActive="active">Admin</a></li>
                 </ul>

@@ -21,21 +21,21 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         private projectService: ProjectService) { }
 
     ngOnInit() {
-        let id: number;44
-
+        let id: number;
         
         this.sub = this.route.params.subscribe(params => {
             let id = params['id'];
-            if (id) {
+            if (id != 0) {
                 this.projectService.get(id)
-                    .then((project: Project) => { this.project = project; console.log(project) })
+                    .then((project: Project) => { 
+                        this.project = project; console.log(project) 
+                    })
                     .catch((err: any) => console.error(err));
             } else {
                 this.project = new Project();
             }
         });
-        //this.service.getStatuses().then(s => this.statuses = s);
-        //this.service.getMonetaryUnits().then(m => this.currencies = m);
+        
 
         //TODO: get data from service
         this.statuses = [
@@ -67,17 +67,21 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         return !this.project._id;
     }
 
-    goToProjects() {
+    goToProjectList() {
         this.router.navigate(['/projects']);
     }
 
     addProject() {
+
         this.projectService.add(this.project)
-            .then((res: any) => { console.log(res) }
-            , (err: any) => { console.error(err); })
+            .then((res: any) => { 
+                console.log(res);
+                this.goToProjectList(); 
+            })
+            .catch((err: any) => { console.error(err); });
     }
 
-    private isValidProject(project: Project) {
+    private isValid(project: Project) {
         return project;
     }
 }

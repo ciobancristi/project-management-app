@@ -2,17 +2,6 @@
     .confirm-button {
         margin: 10px;
     }
-    
-    .ng-valid[required] {
-        border-left: 5px solid #42A948;
-        /* green */
-    }
-    
-    .ng-invalid {
-        border-left: 5px solid #a94442;
-        /* red */
-    }
-    
     .mini-alert {
         padding: 5px;
         border: 1px solid transparent;
@@ -23,7 +12,7 @@
 <div class="jumbotron" >
     <div class="container">
         <div class="col-xs-8 col-xs-offset-2 ">
-            <form class="form-horizontal">
+            <form class="form-horizontal" *ngIf="project">
                 <div class="form-group">
                     <h2>{{isNewProject() ? "Add new project" : project.name + " details"}}</h2>
                 </div>
@@ -40,7 +29,7 @@
                     <label class="col-xs-2 control-label">Status:</label>
                     <div class="col-xs-10">
                         <select [(ngModel)]="project.status" name="status" class="form-control">
-                            <option *ngFor="let status of statuses" [ngValue]="status">{{status.name}}</option>
+                            <option *ngFor="let status of statuses" [value]="status">{{status.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -63,7 +52,7 @@
                     </div>
                     <div class="col-xs-5">
                         <select [(ngModel)]="project.currency" name="currency" class="form-control">
-                            <option *ngFor="let currency of currencies" [ngValue]="currency">{{currency.name}}</option>
+                            <option *ngFor="let currency of currencies" [value]="currency">{{currency.name}}</option>
                         </select>
                     </div>
                 </div>
@@ -79,7 +68,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="pull-left">
-                            <button (click)="goToProjects()" class="btn btn-default confirm-button">Cancel</button>
+                            <button (click)="goToProjectList()" class="btn btn-default confirm-button" formnovalidate>Cancel</button>
                         </div>
                         <div class="pull-left">
                             <button *ngIf="isNewProject()" class="btn btn-success confirm-button" (click)='addProject()'>Add new project</button>

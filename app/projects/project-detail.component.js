@@ -21,20 +21,20 @@ var ProjectDetailComponent = (function () {
     ProjectDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         var id;
-        44;
         this.sub = this.route.params.subscribe(function (params) {
             var id = params['id'];
-            if (id) {
+            if (id != 0) {
                 _this.projectService.get(id)
-                    .then(function (project) { _this.project = project; console.log(project); })
+                    .then(function (project) {
+                    _this.project = project;
+                    console.log(project);
+                })
                     .catch(function (err) { return console.error(err); });
             }
             else {
                 _this.project = new models_1.Project();
             }
         });
-        //this.service.getStatuses().then(s => this.statuses = s);
-        //this.service.getMonetaryUnits().then(m => this.currencies = m);
         //TODO: get data from service
         this.statuses = [
             {
@@ -62,14 +62,19 @@ var ProjectDetailComponent = (function () {
     ProjectDetailComponent.prototype.isNewProject = function () {
         return !this.project._id;
     };
-    ProjectDetailComponent.prototype.goToProjects = function () {
+    ProjectDetailComponent.prototype.goToProjectList = function () {
         this.router.navigate(['/projects']);
     };
     ProjectDetailComponent.prototype.addProject = function () {
+        var _this = this;
         this.projectService.add(this.project)
-            .then(function (res) { console.log(res); }, function (err) { console.error(err); });
+            .then(function (res) {
+            console.log(res);
+            _this.goToProjectList();
+        })
+            .catch(function (err) { console.error(err); });
     };
-    ProjectDetailComponent.prototype.isValidProject = function (project) {
+    ProjectDetailComponent.prototype.isValid = function (project) {
         return project;
     };
     ProjectDetailComponent = __decorate([
