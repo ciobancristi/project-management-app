@@ -36,25 +36,8 @@ var ProjectDetailComponent = (function () {
             }
         });
         //TODO: get data from service
-        this.statuses = [
-            {
-                _id: '1', name: 'In Progress'
-            },
-            {
-                _id: '2', name: 'Finished'
-            }
-        ];
-        this.currencies = [
-            {
-                _id: '1', name: 'USD'
-            },
-            {
-                _id: '2', name: 'RON'
-            },
-            {
-                _id: '3', name: 'EUR'
-            }
-        ];
+        this.statuses = ['In Progress', 'Finished'];
+        this.currencies = ['USD', 'RON', 'EUR'];
     };
     ProjectDetailComponent.prototype.ngOnDestroy = function () {
         this.sub.unsubscribe();

@@ -30,7 +30,7 @@
                     <label class="col-xs-2 control-label">Status:</label>
                     <div class="col-xs-10">
                         <select [(ngModel)]="project.status" name="status" class="form-control">
-                            <option *ngFor="let status of statuses" [value]="status">{{status.name}}</option>
+                            <option *ngFor="let status of statuses" [value]="status">{{status}}</option>
                         </select>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="col-xs-5">
                         <select [(ngModel)]="project.currency" name="currency" class="form-control">
-                            <option *ngFor="let currency of currencies" [value]="currency">{{currency.name}}</option>
+                            <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
                         </select>
                     </div>
                 </div>

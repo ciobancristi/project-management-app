@@ -1,5 +1,3 @@
-import { Status } from './status';
-import { Priority } from './priority';
 import { NameValueItem } from './nameValueItem';
 
 export class Task extends NameValueItem{
@@ -11,6 +9,6 @@ export class Task extends NameValueItem{
     started: Date;
     finished: Date;
     deadline: Date;
-    status: Status;
-    priority: Priority;
+    status: string;
+    priority: string;
 };

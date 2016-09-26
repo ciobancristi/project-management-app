@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from './project.service';
-import { Project, Status, Currency } from '../models/models'
+import { Project } from '../models/models'
 
 @Component({
     moduleId: module.id,
@@ -12,8 +12,8 @@ import { Project, Status, Currency } from '../models/models'
 export class ProjectDetailComponent implements OnInit, OnDestroy {
     private sub: any;
     private project: Project;
-    private statuses: Status[];
-    private currencies: Currency[];
+    private statuses: string[];
+    private currencies: string[];
 
     constructor(
         private route: ActivatedRoute,
@@ -36,27 +36,10 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
             }
         });
 
-
         //TODO: get data from service
-        this.statuses = [
-            {
-                _id: '1', name: 'In Progress'
-            },
-            {
-                _id: '2', name: 'Finished'
-            }
-        ];
-        this.currencies = [
-            {
-                _id: '1', name: 'USD'
-            },
-            {
-                _id: '2', name: 'RON'
-            },
-            {
-                _id: '3', name: 'EUR'
-            }
-        ];
+        this.statuses = ['In Progress', 'Finished']
+
+        this.currencies = ['USD', 'RON', 'EUR'];
     }
 
     ngOnDestroy() {

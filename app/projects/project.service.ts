@@ -14,21 +14,20 @@ export class ProjectService {
     }
 
     add(project: Project) {
-        if (!project._id) {
-            project._id = this.createId();
-        }
+        project._id = this.createId();
+        let currentDate = new Date();
+        project.created = currentDate;
+        project.edited = currentDate;
         return this._db.put(project);
     }
 
     delete(project: Project) {
+        project.edited = new Date();
         return this._db.remove(project);
     }
 
     update(project: Project) {
-        //this.get(project._id).then((doc: any) => {
         return this._db.put(project);
-        //})
-
     }
 
     get(projectId: any) {
@@ -46,6 +45,8 @@ export class ProjectService {
                 .then((docs: any) => {
                     this._projects = docs.rows.map((row: any) => {
                         row.doc.created = new Date(row.doc.created);
+                        row.doc.edited = new Date(row.doc.edited);
+
                         return row.doc;
                     });
 

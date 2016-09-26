@@ -36,18 +36,18 @@ var ProjectService = (function () {
         this._db = new PouchDB('projects');
     }
     ProjectService.prototype.add = function (project) {
-        if (!project._id) {
-            project._id = this.createId();
-        }
+        project._id = this.createId();
+        var currentDate = new Date();
+        project.created = currentDate;
+        project.edited = currentDate;
         return this._db.put(project);
     };
     ProjectService.prototype.delete = function (project) {
+        project.edited = new Date();
         return this._db.remove(project);
     };
     ProjectService.prototype.update = function (project) {
-        //this.get(project._id).then((doc: any) => {
         return this._db.put(project);
-        //})
     };
     ProjectService.prototype.get = function (projectId) {
         if (!this._projects) {
@@ -65,6 +65,7 @@ var ProjectService = (function () {
                 .then(function (docs) {
                 _this._projects = docs.rows.map(function (row) {
                     row.doc.created = new Date(row.doc.created);
+                    row.doc.edited = new Date(row.doc.edited);
                     return row.doc;
                 });
                 // Listen for changes on the database.

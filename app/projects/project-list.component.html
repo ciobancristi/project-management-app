@@ -21,9 +21,15 @@
                         <label class="label label-default">Name:</label> {{project.name}}
                     </li>
                     <li class="list-group-item">
-                        <label class="label label-primary">Status:</label> {{project.status.name}}
+                        <label class="label label-success">Description:</label> {{project.description}}
+                    </li>
+                    <li class="list-group-item">
+                        <label class="label label-primary">Status:</label> {{project.status}}
                     </li>
                 </ul>
+                <!--<div>
+                    <button class="btn btn-default" (click)="viewTasks()">View Tasks</button>
+                </div>-->
             </div>
         </section>
     </article>

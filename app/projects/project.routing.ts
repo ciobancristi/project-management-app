@@ -1,7 +1,6 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ProjectComponent } from './project.component';
 import { ProjectListComponent } from './project-list.component';
 import { ProjectDetailComponent } from './project-detail.component';
 
