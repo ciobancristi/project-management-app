@@ -14,14 +14,13 @@ var project_routing_1 = require('./project.routing');
 var project_service_1 = require('./project.service');
 var project_list_component_1 = require('./project-list.component');
 var project_detail_component_1 = require('./project-detail.component');
-var project_component_1 = require('./project.component');
 var ProjectModule = (function () {
     function ProjectModule() {
     }
     ProjectModule = __decorate([
         core_1.NgModule({
             imports: [project_routing_1.routing, shared_module_1.SharedModule],
-            declarations: [project_component_1.ProjectComponent, project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
+            declarations: [project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
             providers: [project_service_1.ProjectService]
         }), 
         __metadata('design:paramtypes', [])

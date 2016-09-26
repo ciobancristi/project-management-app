@@ -14,18 +14,21 @@ export class ProjectService {
     }
 
     add(project: Project) {
-        if(!project._id) {
+        if (!project._id) {
             project._id = this.createId();
         }
         return this._db.put(project);
     }
 
-    delete(projectId: any) {
-        //TODO: implement
+    delete(project: Project) {
+        return this._db.remove(project);
     }
 
     update(project: Project) {
+        //this.get(project._id).then((doc: any) => {
         return this._db.put(project);
+        //})
+
     }
 
     get(projectId: any) {
@@ -41,7 +44,7 @@ export class ProjectService {
         if (!this._projects) {
             return this._db.allDocs({ include_docs: true })
                 .then((docs: any) => {
-                    this._projects = docs.rows.map((row:any) => {
+                    this._projects = docs.rows.map((row: any) => {
                         row.doc.created = new Date(row.doc.created);
                         return row.doc;
                     });
@@ -76,7 +79,7 @@ export class ProjectService {
         }
     }
 
-    private createId(){
+    private createId() {
         return 'project_' + new Date().getTime();
     }
 }

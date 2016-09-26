@@ -41,11 +41,13 @@ var ProjectService = (function () {
         }
         return this._db.put(project);
     };
-    ProjectService.prototype.delete = function (projectId) {
-        //TODO: implement
+    ProjectService.prototype.delete = function (project) {
+        return this._db.remove(project);
     };
     ProjectService.prototype.update = function (project) {
+        //this.get(project._id).then((doc: any) => {
         return this._db.put(project);
+        //})
     };
     ProjectService.prototype.get = function (projectId) {
         if (!this._projects) {

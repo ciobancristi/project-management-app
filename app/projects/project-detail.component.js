@@ -69,6 +69,21 @@ var ProjectDetailComponent = (function () {
         var _this = this;
         this.projectService.add(this.project)
             .then(function (res) {
+            _this.goToProjectList();
+        })
+            .catch(function (err) { console.error(err); });
+    };
+    ProjectDetailComponent.prototype.updateProject = function () {
+        this.projectService.update(this.project)
+            .then(function (res) {
+            console.log(res);
+        })
+            .catch(function (err) { console.error(err); });
+    };
+    ProjectDetailComponent.prototype.deleteProject = function () {
+        var _this = this;
+        this.projectService.delete(this.project)
+            .then(function (res) {
             console.log(res);
             _this.goToProjectList();
         })

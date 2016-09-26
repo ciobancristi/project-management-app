@@ -22,20 +22,20 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         let id: number;
-        
+
         this.sub = this.route.params.subscribe(params => {
             let id = params['id'];
             if (id != 0) {
                 this.projectService.get(id)
-                    .then((project: Project) => { 
-                        this.project = project; console.log(project) 
+                    .then((project: Project) => {
+                        this.project = project; console.log(project)
                     })
                     .catch((err: any) => console.error(err));
             } else {
                 this.project = new Project();
             }
         });
-        
+
 
         //TODO: get data from service
         this.statuses = [
@@ -72,11 +72,26 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
     }
 
     addProject() {
-
         this.projectService.add(this.project)
-            .then((res: any) => { 
+            .then((res: any) => {
+                this.goToProjectList();
+            })
+            .catch((err: any) => { console.error(err); });
+    }
+
+    updateProject() {
+        this.projectService.update(this.project)
+            .then((res: any) => {
                 console.log(res);
-                this.goToProjectList(); 
+            })
+            .catch((err: any) => { console.error(err); });
+    }
+
+    deleteProject() {
+        this.projectService.delete(this.project)
+            .then((res: any) => {
+                console.log(res);
+                this.goToProjectList();
             })
             .catch((err: any) => { console.error(err); });
     }

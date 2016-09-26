@@ -75,10 +75,10 @@
                             <button type="submit" *ngIf="isNewProject()" [disabled]="!projectForm.form.valid" class="btn btn-success confirm-button"
                                 (click)='addProject()'>Add new project</button>
                             <button type="submit" *ngIf="!isNewProject()" [disabled]="!projectForm.form.valid" class="btn btn-success confirm-button"
-                                (click)='editProject()'>Save</button>
+                                (click)='updateProject()'>Save</button>
                         </div>
                         <div class="pull-right">
-                            <button type="submit" class="btn btn-danger confirm-button">Delete</button>
+                            <button type="submit" (click)="deleteProject()" class="btn btn-danger confirm-button">Delete</button>
                         </div>
                     </div>
                 </div>
