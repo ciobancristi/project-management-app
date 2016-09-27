@@ -9,19 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var toastr_1 = require('toastr');
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(toastr) {
+        this.toastr = toastr;
     }
     DashboardComponent.prototype.ngOnInit = function () { };
+    DashboardComponent.prototype.popToast = function () {
+        this.toastr.pop('success', 'MSG 1', 'msg 2');
+    };
     DashboardComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'dashboard',
-            templateUrl: 'dashboard.component.html'
+            templateUrl: 'dashboard.component.html',
+            providers: [toastr_1.ToasterService]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof toastr_1.ToasterService !== 'undefined' && toastr_1.ToasterService) === 'function' && _a) || Object])
     ], DashboardComponent);
     return DashboardComponent;
+    var _a;
 }());
 exports.DashboardComponent = DashboardComponent;
 //# sourceMappingURL=dashboard.component.js.map

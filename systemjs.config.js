@@ -10,7 +10,8 @@
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
     'rxjs':                       'node_modules/rxjs',
     'pouchdb':                    'node_modules/pouchdb/dist',
-    'raven-js':                   'node_modules/raven-js/dist'
+    'raven-js':                   'node_modules/raven-js/dist',
+    'toastr':                     'node_modules/angular2-toaster'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -18,7 +19,8 @@
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
     'pouchdb':                    { main: 'pouchdb.js', defaultExtension: 'js' },
-    'raven-js':                   { main: 'raven.js', defaultExtension: 'js' }
+    'raven-js':                   { main: 'raven.js', defaultExtension: 'js' },
+    'toastr':                     { main: 'angular2-toaster.js', defaultExtension: 'js' }
   };
   var ngPackageNames = [
     'common',

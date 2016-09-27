@@ -5,7 +5,7 @@ export class Project extends NameValueItem{
     description: string;
     currency: string;
     status: string;
-    client: string;
+    clientId: string;
     estimation: number;
     revenue: number;
     created: Date;

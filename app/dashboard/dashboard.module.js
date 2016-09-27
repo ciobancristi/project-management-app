@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var shared_module_1 = require('../shared/shared.module');
 var dashboard_component_1 = require('./dashboard.component');
 var dashboard_routing_1 = require('./dashboard.routing');
 var DashboardModule = (function () {
@@ -16,10 +17,8 @@ var DashboardModule = (function () {
     }
     DashboardModule = __decorate([
         core_1.NgModule({
-            imports: [dashboard_routing_1.routing],
-            declarations: [
-                dashboard_component_1.DashboardComponent
-            ]
+            imports: [dashboard_routing_1.routing, shared_module_1.SharedModule],
+            declarations: [dashboard_component_1.DashboardComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardModule);
