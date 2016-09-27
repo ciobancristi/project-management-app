@@ -8,11 +8,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var Raven = require('raven-js');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var app_component_1 = require('./app.component');
 var dashboard_module_1 = require('./dashboard/dashboard.module');
+var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
+Raven
+    .config('https://b2d58d9faee947548dd644f0fa1e374a@sentry.io/101859')
+    .install();
+var RavenErrorHandler = (function () {
+    function RavenErrorHandler() {
+    }
+    RavenErrorHandler.prototype.handleError = function (err) {
+        Raven.captureException(err.originalError);
+    };
+    return RavenErrorHandler;
+}());
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,7 +36,8 @@ var AppModule = (function () {
                 app_routing_1.routing,
             ],
             declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent]
+            bootstrap: [app_component_1.AppComponent],
+            providers: [{ provide: core_1.ErrorHandler, useClass: RavenErrorHandler }]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
