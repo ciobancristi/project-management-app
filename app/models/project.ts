@@ -1,7 +1,8 @@
 import { Task } from './task';
-import { NameValueItem } from './nameValueItem';
 
-export class Project extends NameValueItem{
+export class Project {
+    _id: string;
+    name: string;
     description: string;
     currency: string;
     status: string;

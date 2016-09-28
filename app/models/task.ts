@@ -1,6 +1,7 @@
-import { NameValueItem } from './nameValueItem';
 
-export class Task extends NameValueItem {
+export class Task {
+    _id: string;
+    name: string;
     estimation: number;
     duration: number;
     status: string;

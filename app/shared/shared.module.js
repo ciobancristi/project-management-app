@@ -11,14 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
-var toastr_1 = require('toastr');
+var angular2_toaster_1 = require('angular2-toaster');
 var SharedModule = (function () {
     function SharedModule() {
     }
     SharedModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, toastr_1.ToasterModule],
-            exports: [common_1.CommonModule, forms_1.FormsModule, toastr_1.ToasterModule]
+            imports: [common_1.CommonModule, angular2_toaster_1.ToasterModule],
+            exports: [common_1.CommonModule, forms_1.FormsModule, angular2_toaster_1.ToasterModule]
         }), 
         __metadata('design:paramtypes', [])
     ], SharedModule);

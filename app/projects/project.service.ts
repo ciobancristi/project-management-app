@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import * as PouchDB from 'pouchdb';
 import { Project } from '../models/models';
 
-//TODO: add logger!!
 @Injectable()
 export class ProjectService {
     private _db: any;
@@ -14,23 +13,24 @@ export class ProjectService {
     }
 
     add(project: Project) {
-        project._id = this.createId();
         let currentDate = new Date();
         project.created = currentDate;
         project.edited = currentDate;
+        project._id = this.createId();
+
         return this._db.put(project);
     }
 
     delete(project: Project) {
-        project.edited = new Date();
         return this._db.remove(project);
     }
 
     update(project: Project) {
+        project.edited = new Date();
         return this._db.put(project);
     }
 
-    get(projectId: any) {
+    get(projectId: string) {
         if (!this._projects) {
             return this._db.get(projectId);
         } else {
@@ -64,15 +64,16 @@ export class ProjectService {
 
     private onDatabaseChange = (change: any) => {
         var index = this._projects.findIndex(p => p._id === change.id);
-        var birthday = this._projects[index];
+        var project = this._projects[index];
 
         if (change.deleted) {
-            if (birthday) {
+            if (project) {
                 this._projects.splice(index, 1); // delete
             }
         } else {
             change.doc.created = new Date(change.doc.created);
-            if (birthday && birthday._id === change.id) {
+            change.doc.edited = new Date(change.doc.edited);
+            if (project && project._id === change.id) {
                 this._projects[index] = change.doc; // update
             } else {
                 this._projects.splice(index, 0, change.doc) // insert

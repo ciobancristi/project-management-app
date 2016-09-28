@@ -1,0 +1,17 @@
+<div class="jumbotron">
+    <ul class="listgroup" *ngFor="let client of clients">
+        <div (click)="onSelect(client)" class="panel panel-default">
+            <div class="panel-body">
+                {{client.name}} -- {{client.email}}
+                <button class="btn btn-danger pull-right" (click)="deleteClient(client)">delete</button>
+            </div>
+        </div>
+    </ul>
+</div>
+
+<div>
+    <button class="btn btn-primary" (click)="addClient()">Add new client</button>
+</div>
+
+<toaster-container></toaster-container>
+<client-detail [client]="selectedClient" [editMode]="editMode"></client-detail>

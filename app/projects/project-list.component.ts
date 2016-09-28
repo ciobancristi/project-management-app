@@ -10,7 +10,7 @@ import { Project } from '../models/models';
     providers: [ProjectService]
 })
 export class ProjectListComponent implements OnInit {
-    projects: Project[];
+    private projects: Project[];
 
     constructor(
         private projectService: ProjectService,
@@ -19,7 +19,8 @@ export class ProjectListComponent implements OnInit {
 
     ngOnInit() {
         this.projectService.getAll()
-            .then((p: Project[]) => this.projects = p);
+            .then((p: Project[]) => this.projects = p)
+            .catch((err: any)=> console.error("error getting all projects"));
     }
 
     goToProject(projectId: number) {

@@ -36,8 +36,8 @@ var AppModule = (function () {
                 app_routing_1.routing,
             ],
             declarations: [app_component_1.AppComponent],
-            bootstrap: [app_component_1.AppComponent],
-            providers: [{ provide: core_1.ErrorHandler, useClass: RavenErrorHandler }]
+            providers: [{ provide: core_1.ErrorHandler, useClass: RavenErrorHandler }],
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

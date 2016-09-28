@@ -10,22 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var PouchDB = require('pouchdb');
-//TODO: add logger!!
 var ProjectService = (function () {
     //TODO: make _db injectable
     function ProjectService() {
         var _this = this;
         this.onDatabaseChange = function (change) {
             var index = _this._projects.findIndex(function (p) { return p._id === change.id; });
-            var birthday = _this._projects[index];
+            var project = _this._projects[index];
             if (change.deleted) {
-                if (birthday) {
+                if (project) {
                     _this._projects.splice(index, 1); // delete
                 }
             }
             else {
                 change.doc.created = new Date(change.doc.created);
-                if (birthday && birthday._id === change.id) {
+                change.doc.edited = new Date(change.doc.edited);
+                if (project && project._id === change.id) {
                     _this._projects[index] = change.doc; // update
                 }
                 else {
@@ -36,17 +36,17 @@ var ProjectService = (function () {
         this._db = new PouchDB('projects');
     }
     ProjectService.prototype.add = function (project) {
-        project._id = this.createId();
         var currentDate = new Date();
         project.created = currentDate;
         project.edited = currentDate;
+        project._id = this.createId();
         return this._db.put(project);
     };
     ProjectService.prototype.delete = function (project) {
-        project.edited = new Date();
         return this._db.remove(project);
     };
     ProjectService.prototype.update = function (project) {
+        project.edited = new Date();
         return this._db.put(project);
     };
     ProjectService.prototype.get = function (projectId) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToasterService } from 'toastr';
+import { ToasterService } from 'angular2-toaster';
 
 @Component({
     moduleId: module.id,
