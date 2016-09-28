@@ -17,14 +17,11 @@ var app_routing_1 = require('./app.routing');
 Raven
     .config('https://b2d58d9faee947548dd644f0fa1e374a@sentry.io/101859')
     .install();
-var RavenErrorHandler = (function () {
-    function RavenErrorHandler() {
-    }
-    RavenErrorHandler.prototype.handleError = function (err) {
-        Raven.captureException(err.originalError);
-    };
-    return RavenErrorHandler;
-}());
+// class RavenErrorHandler implements ErrorHandler {
+//     handleError(err: any): void {
+//         Raven.captureException(err.originalError);
+//     }
+// }
 var AppModule = (function () {
     function AppModule() {
     }
@@ -36,7 +33,7 @@ var AppModule = (function () {
                 app_routing_1.routing,
             ],
             declarations: [app_component_1.AppComponent],
-            providers: [{ provide: core_1.ErrorHandler, useClass: RavenErrorHandler }],
+            //providers: [{ provide: ErrorHandler, useClass: RavenErrorHandler }],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

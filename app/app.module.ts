@@ -11,11 +11,11 @@ Raven
     .config('https://b2d58d9faee947548dd644f0fa1e374a@sentry.io/101859')
     .install();
 
-class RavenErrorHandler implements ErrorHandler {
-    handleError(err: any): void {
-        Raven.captureException(err.originalError);
-    }
-}
+// class RavenErrorHandler implements ErrorHandler {
+//     handleError(err: any): void {
+//         Raven.captureException(err.originalError);
+//     }
+// }
 
 @NgModule({
     imports: [
@@ -24,7 +24,7 @@ class RavenErrorHandler implements ErrorHandler {
         routing,
     ],
     declarations: [AppComponent],
-    providers: [{ provide: ErrorHandler, useClass: RavenErrorHandler }],
+    //providers: [{ provide: ErrorHandler, useClass: RavenErrorHandler }],
     bootstrap: [AppComponent]
 })
 
