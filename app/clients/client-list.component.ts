@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ToasterService} from 'angular2-toaster';
+import { ToasterService } from 'angular2-toaster';
 import { ClientDataService } from './client-data.service';
 import { Client } from '../models/client';
 
@@ -25,7 +25,6 @@ export class ClientListComponent implements OnInit {
         this.clientService.getAll()
             .then((c: Client[]) => {
                 this.clients = c;
-                console.log("clients:", c);
             })
             .catch((err: any) => { console.error(err); });
     }
@@ -41,7 +40,7 @@ export class ClientListComponent implements OnInit {
     deleteClient(client: Client) {
         this.clientService.delete(client)
             .then((res: any) => {
-                console.log("client delted successfully", res);
+                console.log("client deleted successfully", res);
                 this.toastr.pop("success", "Success", "Client deleted successfully!");
                 this.selectedClient = undefined;
             })

@@ -25,7 +25,6 @@ var ClientListComponent = (function () {
         this.clientService.getAll()
             .then(function (c) {
             _this.clients = c;
-            console.log("clients:", c);
         })
             .catch(function (err) { console.error(err); });
     };
@@ -39,7 +38,7 @@ var ClientListComponent = (function () {
         var _this = this;
         this.clientService.delete(client)
             .then(function (res) {
-            console.log("client delted successfully", res);
+            console.log("client deleted successfully", res);
             _this.toastr.pop("success", "Success", "Client deleted successfully!");
             _this.selectedClient = undefined;
         })

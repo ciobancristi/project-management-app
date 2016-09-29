@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
+var project_data_service_1 = require('../projects/project-data.service');
 var client_data_service_1 = require('./client-data.service');
 var client_component_1 = require('./client.component');
 var client_list_component_1 = require('./client-list.component');
@@ -22,7 +23,7 @@ var ClientModule = (function () {
         core_1.NgModule({
             imports: [client_routing_1.routing, shared_module_1.SharedModule],
             declarations: [client_component_1.ClientComponent, client_list_component_1.ClientListComponent, client_detail_component_1.ClientDetailComponent],
-            providers: [client_data_service_1.ClientDataService]
+            providers: [client_data_service_1.ClientDataService, project_data_service_1.ProjectDataService]
         }), 
         __metadata('design:paramtypes', [])
     ], ClientModule);

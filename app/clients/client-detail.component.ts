@@ -1,7 +1,8 @@
-import { Component, OnInit, OnDestroy, EventEmitter, Input, Output } from '@angular/core';
-import { ToasterService} from 'angular2-toaster';
+import { Component, OnInit, OnDestroy, EventEmitter, Input } from '@angular/core';
+import { ToasterService } from 'angular2-toaster';
 import { ClientDataService } from './client-data.service';
-import { Client } from '../models/client';
+import { Client, Project } from '../models/models';
+import { ProjectDataService } from '../projects/project-data.service';
 
 @Component({
     moduleId: module.id,
@@ -10,14 +11,18 @@ import { Client } from '../models/client';
 })
 export class ClientDetailComponent implements OnInit {
     @Input() client: Client;
-    //@Input() editMode: boolean;
-    //private sub: any;
-    //private show: boolean;
+    projects: SelectItem[];
 
     constructor(private clientService: ClientDataService,
-        private toastr: ToasterService) { }
+        private toastr: ToasterService,
+        private projectService: ProjectDataService) { }
 
     ngOnInit() {
+        this.projectService.getAll()
+            .then((p: Project[]) => {
+                this.projects = p;
+            })
+            .catch((err: any) => { console.error(err); });
     }
 
     cancel() {
@@ -26,7 +31,6 @@ export class ClientDetailComponent implements OnInit {
 
     //TODO: optimize to save only on change
     save() {
-        console.log(this.client);
         if (this.client._id) {
             this.clientService.update(this.client)
                 .then((res: any) => {
@@ -51,4 +55,18 @@ export class ClientDetailComponent implements OnInit {
                 });
         }
     }
+}
+
+//TODO: decide to keep or not
+export class SelectItem {
+    id?: string;
+    name?: string;
+    constructor(id: string, name: string) {
+        this.id = id;
+        this.name = name;
+    }
+}
+
+export class SelectGroupItem extends SelectItem {
+    children?: SelectItem[];
 }

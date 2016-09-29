@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -11,16 +16,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var angular2_toaster_1 = require('angular2-toaster');
 var client_data_service_1 = require('./client-data.service');
-var client_1 = require('../models/client');
+var models_1 = require('../models/models');
+var project_data_service_1 = require('../projects/project-data.service');
 var ClientDetailComponent = (function () {
-    //@Input() editMode: boolean;
-    //private sub: any;
-    //private show: boolean;
-    function ClientDetailComponent(clientService, toastr) {
+    function ClientDetailComponent(clientService, toastr, projectService) {
         this.clientService = clientService;
         this.toastr = toastr;
+        this.projectService = projectService;
     }
     ClientDetailComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.projectService.getAll()
+            .then(function (p) {
+            _this.projects = p;
+        })
+            .catch(function (err) { console.error(err); });
     };
     ClientDetailComponent.prototype.cancel = function () {
         this.client = null;
@@ -28,7 +38,6 @@ var ClientDetailComponent = (function () {
     //TODO: optimize to save only on change
     ClientDetailComponent.prototype.save = function () {
         var _this = this;
-        console.log(this.client);
         if (this.client._id) {
             this.clientService.update(this.client)
                 .then(function (res) {
@@ -56,7 +65,7 @@ var ClientDetailComponent = (function () {
     };
     __decorate([
         core_1.Input(), 
-        __metadata('design:type', client_1.Client)
+        __metadata('design:type', models_1.Client)
     ], ClientDetailComponent.prototype, "client", void 0);
     ClientDetailComponent = __decorate([
         core_1.Component({
@@ -64,9 +73,26 @@ var ClientDetailComponent = (function () {
             selector: 'client-detail',
             templateUrl: 'client-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [client_data_service_1.ClientDataService, angular2_toaster_1.ToasterService])
+        __metadata('design:paramtypes', [client_data_service_1.ClientDataService, angular2_toaster_1.ToasterService, project_data_service_1.ProjectDataService])
     ], ClientDetailComponent);
     return ClientDetailComponent;
 }());
 exports.ClientDetailComponent = ClientDetailComponent;
+//TODO: decide to keep or not
+var SelectItem = (function () {
+    function SelectItem(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+    return SelectItem;
+}());
+exports.SelectItem = SelectItem;
+var SelectGroupItem = (function (_super) {
+    __extends(SelectGroupItem, _super);
+    function SelectGroupItem() {
+        _super.apply(this, arguments);
+    }
+    return SelectGroupItem;
+}(SelectItem));
+exports.SelectGroupItem = SelectGroupItem;
 //# sourceMappingURL=client-detail.component.js.map

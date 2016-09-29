@@ -1,17 +1,15 @@
 <div *ngIf="client" class="well">
-    <div>
-        <form #clientDetailForm="ngForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="name" [(ngModel)]="client.name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="client.email" required>
-            </div>
-            <button type="submit" class="btn btn-success" [disabled]="!clientDetailForm.form.valid" (click)="save()">Save</button>
-            <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-        </form>
-    </div>
+    <form #clientDetailForm="ngForm">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" placeholder="name" [(ngModel)]="client.name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="client.email" required>
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!clientDetailForm.form.valid" (click)="save()">Save</button>
+        <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+    </form>
     <toaster-container></toaster-container>
 </div>
