@@ -29,9 +29,9 @@ export class ClientDetailComponent implements OnInit {
         console.log(this.client);
         if (this.client._id) {
             this.clientService.update(this.client)
-                .then(() => {
+                .then((res: any) => {
                     this.client = undefined;
-                    console.info("client update successfully");
+                    console.info("client update successfully", res);
                     this.toastr.pop("success", "Success", "Client updated successfully!");
                 })
                 .catch((err: any) => {
@@ -40,9 +40,9 @@ export class ClientDetailComponent implements OnInit {
                 });
         } else {
             this.clientService.add(this.client)
-                .then(() => {
+                .then((res: any) => {
                     this.client = undefined;
-                    console.info("client update successfully");
+                    console.info("client update successfully", res);
                     this.toastr.pop("success", "msg", "Client added successfully");
                 })
                 .catch((err: any) => {

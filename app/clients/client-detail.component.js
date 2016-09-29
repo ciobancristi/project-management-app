@@ -31,9 +31,9 @@ var ClientDetailComponent = (function () {
         console.log(this.client);
         if (this.client._id) {
             this.clientService.update(this.client)
-                .then(function () {
+                .then(function (res) {
                 _this.client = undefined;
-                console.info("client update successfully");
+                console.info("client update successfully", res);
                 _this.toastr.pop("success", "Success", "Client updated successfully!");
             })
                 .catch(function (err) {
@@ -43,9 +43,9 @@ var ClientDetailComponent = (function () {
         }
         else {
             this.clientService.add(this.client)
-                .then(function () {
+                .then(function (res) {
                 _this.client = undefined;
-                console.info("client update successfully");
+                console.info("client update successfully", res);
                 _this.toastr.pop("success", "msg", "Client added successfully");
             })
                 .catch(function (err) {
