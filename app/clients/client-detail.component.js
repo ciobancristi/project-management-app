@@ -10,9 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var angular2_toaster_1 = require('angular2-toaster');
-var client_service_1 = require('./client.service');
+var client_data_service_1 = require('./client-data.service');
 var client_1 = require('../models/client');
 var ClientDetailComponent = (function () {
+    //@Input() editMode: boolean;
+    //private sub: any;
+    //private show: boolean;
     function ClientDetailComponent(clientService, toastr) {
         this.clientService = clientService;
         this.toastr = toastr;
@@ -22,6 +25,7 @@ var ClientDetailComponent = (function () {
     ClientDetailComponent.prototype.cancel = function () {
         this.client = null;
     };
+    //TODO: optimize to save only on change
     ClientDetailComponent.prototype.save = function () {
         var _this = this;
         console.log(this.client);
@@ -30,9 +34,12 @@ var ClientDetailComponent = (function () {
                 .then(function () {
                 _this.client = undefined;
                 console.info("client update successfully");
-                _this.toastr.pop("success", "msg", "Client updated successfully!");
+                _this.toastr.pop("success", "Success", "Client updated successfully!");
             })
-                .catch(function (err) { return console.error(err); });
+                .catch(function (err) {
+                _this.toastr.pop("error", "Error", "An error occurred on update!");
+                console.error(err);
+            });
         }
         else {
             this.clientService.add(this.client)
@@ -41,24 +48,23 @@ var ClientDetailComponent = (function () {
                 console.info("client update successfully");
                 _this.toastr.pop("success", "msg", "Client added successfully");
             })
-                .catch(function (err) { return console.error(err); });
+                .catch(function (err) {
+                _this.toastr.pop("error", "Error", "An error occurred on add!");
+                console.error(err);
+            });
         }
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', client_1.Client)
     ], ClientDetailComponent.prototype, "client", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Boolean)
-    ], ClientDetailComponent.prototype, "editMode", void 0);
     ClientDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'client-detail',
             templateUrl: 'client-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [client_service_1.ClientService, angular2_toaster_1.ToasterService])
+        __metadata('design:paramtypes', [client_data_service_1.ClientDataService, angular2_toaster_1.ToasterService])
     ], ClientDetailComponent);
     return ClientDetailComponent;
 }());

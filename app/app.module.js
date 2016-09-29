@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var Raven = require('raven-js');
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var dashboard_module_1 = require('./dashboard/dashboard.module');
 var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
-Raven
-    .config('https://b2d58d9faee947548dd644f0fa1e374a@sentry.io/101859')
-    .install();
+//TODO: uncomment in prod mode
+// Raven
+//     .config('https://b2d58d9faee947548dd644f0fa1e374a@sentry.io/101859')
+//     .install();
 // class RavenErrorHandler implements ErrorHandler {
 //     handleError(err: any): void {
 //         Raven.captureException(err.originalError);

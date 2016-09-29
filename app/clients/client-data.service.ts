@@ -3,7 +3,7 @@ import * as PouchDB from 'pouchdb';
 import { Client } from '../models/client';
 
 @Injectable()
-export class ClientService {
+export class ClientDataService {
     private _db: any;
     private _clients: Client[];
 

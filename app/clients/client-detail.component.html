@@ -1,16 +1,5 @@
 <div *ngIf="client" class="well">
-    <div class="panel panel-default" *ngIf="!editMode">
-        <div class="panel-heading">{{client.name}}</div>
-        <div class="panel-body">
-            <label>Client email: {{client.email}}</label>
-            <label>Client since: {{client.created | date}}</label>
-            <label *ngIf="client.projects">
-            <span *ngFor="let project of client.projects">{{project.name}}</span><span>;</span>
-        </label>
-        </div>
-    </div>
-
-    <div class="" *ngIf="editMode">
+    <div>
         <form #clientDetailForm="ngForm">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -20,11 +9,9 @@
                 <label for="email">Email address</label>
                 <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="client.email" required>
             </div>
-            <button type="button" class="btn btn-success" [disabled]="!clientDetailForm.form.valid" (click)="save()">Save</button>
+            <button type="submit" class="btn btn-success" [disabled]="!clientDetailForm.form.valid" (click)="save()">Save</button>
             <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
         </form>
     </div>
     <toaster-container></toaster-container>
-    {{client | json}}
-    <p>{{editMode }}</p>
 </div>

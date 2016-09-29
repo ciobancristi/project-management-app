@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var project_service_1 = require('./project.service');
+var project_data_service_1 = require('./project-data.service');
 var ProjectListComponent = (function () {
     function ProjectListComponent(projectService, router) {
         this.projectService = projectService;
@@ -29,10 +29,9 @@ var ProjectListComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'project-list',
-            templateUrl: 'project-list.component.html',
-            providers: [project_service_1.ProjectService]
+            templateUrl: 'project-list.component.html'
         }), 
-        __metadata('design:paramtypes', [project_service_1.ProjectService, router_1.Router])
+        __metadata('design:paramtypes', [project_data_service_1.ProjectDataService, router_1.Router])
     ], ProjectListComponent);
     return ProjectListComponent;
 }());

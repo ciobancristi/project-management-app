@@ -10,20 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var project_service_1 = require('./project.service');
+var angular2_toaster_1 = require('angular2-toaster');
+var project_data_service_1 = require('./project-data.service');
 var models_1 = require('../models/models');
 var ProjectDetailComponent = (function () {
-    function ProjectDetailComponent(route, router, projectService) {
+    function ProjectDetailComponent(route, router, projectService, toastr) {
         this.route = route;
         this.router = router;
         this.projectService = projectService;
+        this.toastr = toastr;
     }
     ProjectDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         var id;
         this.sub = this.route.params.subscribe(function (params) {
             var id = params['id'];
-            if (id != 0) {
+            if (id != "newProject") {
                 _this.projectService.get(id)
                     .then(function (project) {
                     _this.project = project;
@@ -52,16 +54,25 @@ var ProjectDetailComponent = (function () {
         var _this = this;
         this.projectService.add(this.project)
             .then(function (res) {
+            console.log(res);
             _this.goToProjectList();
         })
-            .catch(function (err) { console.error(err); });
+            .catch(function (err) {
+            _this.toastr.pop("error", "Error", "An error occurred on add.");
+            console.error(err);
+        });
     };
     ProjectDetailComponent.prototype.updateProject = function () {
+        var _this = this;
         this.projectService.update(this.project)
             .then(function (res) {
             console.log(res);
+            _this.goToProjectList();
         })
-            .catch(function (err) { console.error(err); });
+            .catch(function (err) {
+            _this.toastr.pop("error", "Error", "An error occurred on update.");
+            console.error(err);
+        });
     };
     ProjectDetailComponent.prototype.deleteProject = function () {
         var _this = this;
@@ -70,16 +81,18 @@ var ProjectDetailComponent = (function () {
             console.log(res);
             _this.goToProjectList();
         })
-            .catch(function (err) { console.error(err); });
+            .catch(function (err) {
+            _this.toastr.pop("error", "Error", "An error occurred on delete.");
+            console.error(err);
+        });
     };
     ProjectDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'project-detail',
-            templateUrl: 'project-detail.component.html',
-            providers: [project_service_1.ProjectService]
+            templateUrl: 'project-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, project_service_1.ProjectService])
+        __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, project_data_service_1.ProjectDataService, angular2_toaster_1.ToasterService])
     ], ProjectDetailComponent);
     return ProjectDetailComponent;
 }());

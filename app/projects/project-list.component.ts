@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProjectService } from './project.service';
+import { ProjectDataService } from './project-data.service';
 import { Project } from '../models/models';
 
 @Component({
     moduleId: module.id,
     selector: 'project-list',
-    templateUrl: 'project-list.component.html',
-    providers: [ProjectService]
+    templateUrl: 'project-list.component.html'
 })
 export class ProjectListComponent implements OnInit {
     private projects: Project[];
 
     constructor(
-        private projectService: ProjectService,
+        private projectService: ProjectDataService,
         private router: Router) {
     }
 

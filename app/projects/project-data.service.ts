@@ -3,7 +3,7 @@ import * as PouchDB from 'pouchdb';
 import { Project } from '../models/models';
 
 @Injectable()
-export class ProjectService {
+export class ProjectDataService {
     private _db: any;
     private _projects: Project[];
 

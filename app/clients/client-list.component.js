@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var angular2_toaster_1 = require('angular2-toaster');
-var client_service_1 = require('./client.service');
+var client_data_service_1 = require('./client-data.service');
 var client_1 = require('../models/client');
 var ClientListComponent = (function () {
     function ClientListComponent(clientService, toastr) {
@@ -19,7 +19,6 @@ var ClientListComponent = (function () {
     }
     ClientListComponent.prototype.ngOnInit = function () {
         this.bindData();
-        this.editMode = false;
     };
     ClientListComponent.prototype.bindData = function () {
         var _this = this;
@@ -31,22 +30,23 @@ var ClientListComponent = (function () {
             .catch(function (err) { console.error(err); });
     };
     ClientListComponent.prototype.addClient = function () {
-        this.selectedClient = new client_1.Client();
-        this.editMode = true;
+        this.newClient = new client_1.Client();
     };
     ClientListComponent.prototype.onSelect = function (client) {
-        this.selectedClient = client;
-        this.editMode = false;
+        this.selectedClient = this.selectedClient === client ? undefined : client;
     };
     ClientListComponent.prototype.deleteClient = function (client) {
         var _this = this;
         this.clientService.delete(client)
             .then(function (res) {
             console.log("client delted successfully", res);
-            _this.toastr.pop("success", "msg", "Client deleted successfully!");
+            _this.toastr.pop("success", "Success", "Client deleted successfully!");
             _this.selectedClient = undefined;
         })
-            .catch(function (err) { return console.error(err); });
+            .catch(function (err) {
+            _this.toastr.pop("error", "Error", "An error occurred on delete!");
+            console.error(err);
+        });
     };
     ClientListComponent = __decorate([
         core_1.Component({
@@ -54,7 +54,7 @@ var ClientListComponent = (function () {
             selector: 'client-list',
             templateUrl: 'client-list.component.html'
         }), 
-        __metadata('design:paramtypes', [client_service_1.ClientService, angular2_toaster_1.ToasterService])
+        __metadata('design:paramtypes', [client_data_service_1.ClientDataService, angular2_toaster_1.ToasterService])
     ], ClientListComponent);
     return ClientListComponent;
 }());

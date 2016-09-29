@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ToasterService} from 'angular2-toaster';
-import { ClientService } from './client.service';
+import { ClientDataService } from './client-data.service';
 import { Client } from '../models/client';
 
 @Component({
@@ -12,14 +12,13 @@ import { Client } from '../models/client';
 export class ClientListComponent implements OnInit {
     private clients: Client[];
     private selectedClient: Client;
-    private editMode: boolean;
+    private newClient: Client;
 
-    constructor(private clientService: ClientService,
+    constructor(private clientService: ClientDataService,
         private toastr: ToasterService) { }
 
     ngOnInit() {
         this.bindData();
-        this.editMode = false;
     }
 
     bindData() {
@@ -32,22 +31,23 @@ export class ClientListComponent implements OnInit {
     }
 
     addClient() {
-        this.selectedClient = new Client();
-        this.editMode = true;
+        this.newClient = new Client();
     }
 
     onSelect(client: Client) {
-        this.selectedClient = client;
-        this.editMode = false;
+        this.selectedClient = this.selectedClient === client ? undefined : client;
     }
 
     deleteClient(client: Client) {
         this.clientService.delete(client)
             .then((res: any) => {
                 console.log("client delted successfully", res);
-                this.toastr.pop("success", "msg", "Client deleted successfully!");
+                this.toastr.pop("success", "Success", "Client deleted successfully!");
                 this.selectedClient = undefined;
             })
-            .catch((err: any) => console.error(err));
+            .catch((err: any) => {
+                this.toastr.pop("error", "Error", "An error occurred on delete!");
+                console.error(err);
+            });
     }
 }

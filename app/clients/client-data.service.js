@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var PouchDB = require('pouchdb');
-var ClientService = (function () {
+var ClientDataService = (function () {
     //TODO: make _db injectable
-    function ClientService() {
+    function ClientDataService() {
         var _this = this;
         this.onDatabaseChange = function (change) {
             var index = _this._clients.findIndex(function (p) { return p._id === change.id; });
@@ -34,19 +34,19 @@ var ClientService = (function () {
         };
         this._db = new PouchDB('clients');
     }
-    ClientService.prototype.add = function (client) {
+    ClientDataService.prototype.add = function (client) {
         client._id = this.createId();
         client.created = new Date();
         ;
         return this._db.put(client);
     };
-    ClientService.prototype.delete = function (client) {
+    ClientDataService.prototype.delete = function (client) {
         return this._db.remove(client);
     };
-    ClientService.prototype.update = function (client) {
+    ClientDataService.prototype.update = function (client) {
         return this._db.put(client);
     };
-    ClientService.prototype.get = function (clientId) {
+    ClientDataService.prototype.get = function (clientId) {
         if (!this._clients) {
             return this._db.get(clientId);
         }
@@ -55,7 +55,7 @@ var ClientService = (function () {
                 .find(function (p) { return p._id === clientId; }));
         }
     };
-    ClientService.prototype.getAll = function () {
+    ClientDataService.prototype.getAll = function () {
         var _this = this;
         if (!this._clients) {
             return this._db.allDocs({ include_docs: true })
@@ -75,14 +75,14 @@ var ClientService = (function () {
             return Promise.resolve(this._clients);
         }
     };
-    ClientService.prototype.createId = function () {
+    ClientDataService.prototype.createId = function () {
         return 'client_' + new Date().getTime();
     };
-    ClientService = __decorate([
+    ClientDataService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], ClientService);
-    return ClientService;
+    ], ClientDataService);
+    return ClientDataService;
 }());
-exports.ClientService = ClientService;
-//# sourceMappingURL=client.service.js.map
+exports.ClientDataService = ClientDataService;
+//# sourceMappingURL=client-data.service.js.map

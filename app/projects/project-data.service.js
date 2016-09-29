@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var PouchDB = require('pouchdb');
-var ProjectService = (function () {
+var ProjectDataService = (function () {
     //TODO: make _db injectable
-    function ProjectService() {
+    function ProjectDataService() {
         var _this = this;
         this.onDatabaseChange = function (change) {
             var index = _this._projects.findIndex(function (p) { return p._id === change.id; });
@@ -35,21 +35,21 @@ var ProjectService = (function () {
         };
         this._db = new PouchDB('projects');
     }
-    ProjectService.prototype.add = function (project) {
+    ProjectDataService.prototype.add = function (project) {
         var currentDate = new Date();
         project.created = currentDate;
         project.edited = currentDate;
         project._id = this.createId();
         return this._db.put(project);
     };
-    ProjectService.prototype.delete = function (project) {
+    ProjectDataService.prototype.delete = function (project) {
         return this._db.remove(project);
     };
-    ProjectService.prototype.update = function (project) {
+    ProjectDataService.prototype.update = function (project) {
         project.edited = new Date();
         return this._db.put(project);
     };
-    ProjectService.prototype.get = function (projectId) {
+    ProjectDataService.prototype.get = function (projectId) {
         if (!this._projects) {
             return this._db.get(projectId);
         }
@@ -58,7 +58,7 @@ var ProjectService = (function () {
                 .find(function (p) { return p._id === projectId; }));
         }
     };
-    ProjectService.prototype.getAll = function () {
+    ProjectDataService.prototype.getAll = function () {
         var _this = this;
         if (!this._projects) {
             return this._db.allDocs({ include_docs: true })
@@ -79,14 +79,14 @@ var ProjectService = (function () {
             return Promise.resolve(this._projects);
         }
     };
-    ProjectService.prototype.createId = function () {
+    ProjectDataService.prototype.createId = function () {
         return 'project_' + new Date().getTime();
     };
-    ProjectService = __decorate([
+    ProjectDataService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], ProjectService);
-    return ProjectService;
+    ], ProjectDataService);
+    return ProjectDataService;
 }());
-exports.ProjectService = ProjectService;
-//# sourceMappingURL=project.service.js.map
+exports.ProjectDataService = ProjectDataService;
+//# sourceMappingURL=project-data.service.js.map
