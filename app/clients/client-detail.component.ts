@@ -11,7 +11,7 @@ import { ProjectDataService } from '../projects/project-data.service';
 })
 export class ClientDetailComponent implements OnInit {
     @Input() client: Client;
-    projects: SelectItem[];
+    projects: Project[];
 
     constructor(private clientService: ClientDataService,
         private toastr: ToasterService,

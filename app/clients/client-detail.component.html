@@ -8,6 +8,14 @@
             <label for="email">Email address</label>
             <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="client.email" required>
         </div>
+        <div class="form-group">
+            <label for="projects">Projects</label>
+            <select multiple name="projects" [(ngModel)]="client.projects">
+                <option *ngFor="let project of projects" [value]="project._id">  
+                    {{project.name}}
+                </option>
+            </select>
+        </div>
         <button type="submit" class="btn btn-success" [disabled]="!clientDetailForm.form.valid" (click)="save()">Save</button>
         <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
     </form>
