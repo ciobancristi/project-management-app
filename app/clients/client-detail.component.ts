@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, EventEmitter, Input } from '@angular/core';
 import { ToasterService } from 'angular2-toaster';
-import { ClientDataService } from './client-data.service';
+import { ClientDataService } from '../data/client-data.service';
 import { Client, Project } from '../models/models';
-import { ProjectDataService } from '../projects/project-data.service';
+import { ProjectDataService } from '../data/project-data.service';
 
 @Component({
     moduleId: module.id,

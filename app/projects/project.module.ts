@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module'
 
-import { ProjectDataService } from './project-data.service';
+import { ProjectDataService } from '../data/project-data.service';
 import { ProjectListComponent } from './project-list.component';
 import { ProjectDetailComponent } from './project-detail.component';
 import { routing } from './project.routing';

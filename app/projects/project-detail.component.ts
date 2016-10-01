@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToasterService} from 'angular2-toaster';
-import { ProjectDataService } from './project-data.service';
+import { ProjectDataService } from '../data/project-data.service';
 import { Project } from '../models/models'
 
 @Component({

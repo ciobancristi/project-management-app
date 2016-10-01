@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var angular2_toaster_1 = require('angular2-toaster');
-var client_data_service_1 = require('./client-data.service');
+var client_data_service_1 = require('../data/client-data.service');
 var client_1 = require('../models/client');
 var ClientListComponent = (function () {
     function ClientListComponent(clientService, toastr) {

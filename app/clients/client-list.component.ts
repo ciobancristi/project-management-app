@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ToasterService } from 'angular2-toaster';
-import { ClientDataService } from './client-data.service';
+import { ClientDataService } from '../data/client-data.service';
 import { Client } from '../models/client';
 
 @Component({
