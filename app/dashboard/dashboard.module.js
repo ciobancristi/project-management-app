@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
+var angular2_highcharts_1 = require('angular2-highcharts');
 var dashboard_component_1 = require('./dashboard.component');
 var dashboard_routing_1 = require('./dashboard.routing');
 var DashboardModule = (function () {
@@ -17,7 +18,7 @@ var DashboardModule = (function () {
     }
     DashboardModule = __decorate([
         core_1.NgModule({
-            imports: [dashboard_routing_1.routing, shared_module_1.SharedModule],
+            imports: [dashboard_routing_1.routing, shared_module_1.SharedModule, angular2_highcharts_1.ChartModule],
             declarations: [dashboard_component_1.DashboardComponent]
         }), 
         __metadata('design:paramtypes', [])
