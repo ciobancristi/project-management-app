@@ -12,16 +12,27 @@ var core_1 = require('@angular/core');
 var models_1 = require('../models/models');
 var TaskListComponent = (function () {
     function TaskListComponent() {
+        this.taskModifiedEvent = new core_1.EventEmitter();
     }
-    TaskListComponent.prototype.ngOnInit = function () {
-    };
+    TaskListComponent.prototype.ngOnInit = function () { };
     TaskListComponent.prototype.addTask = function () {
         this.newTask = new models_1.Task;
+    };
+    TaskListComponent.prototype.taskModified = function (newTask) {
+        this.tasks.push(newTask);
+        this.taskModifiedEvent.emit();
+    };
+    TaskListComponent.prototype.editTask = function (task) {
+        this.selectedTask = task;
     };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)
     ], TaskListComponent.prototype, "tasks", void 0);
+    __decorate([
+        core_1.Output(), 
+        __metadata('design:type', Object)
+    ], TaskListComponent.prototype, "taskModifiedEvent", void 0);
     TaskListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

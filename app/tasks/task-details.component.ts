@@ -1,5 +1,5 @@
 import {Task} from '../models/models';
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
     moduleId: module.id,
@@ -9,6 +9,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class TaskDetailsComponent implements OnInit {
     @Input() task: Task;
     @Input() editMode: boolean;
+    @Output() taskModified = new EventEmitter();
     statuses: string[];
     priorities: string[];
 
@@ -21,11 +22,19 @@ export class TaskDetailsComponent implements OnInit {
     }
 
     //TODO: add selected deadline validation
-    addTask(){
-        
+    save() {
+        this.setDates();
+        this.taskModified.emit(this.task);
     }
 
-    cancel(){
+    setDates() {
+        let currentDate = new Date();
+        if(!this.task.created) this.task.created = currentDate;
+        this.task.updated = currentDate;
+        this.task.deadline = new Date(this.task.deadline.toString());
+    }
+
+    cancel() {
         this.task = undefined;
     }
 }

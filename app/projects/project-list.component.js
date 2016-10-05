@@ -26,7 +26,15 @@ var ProjectListComponent = (function () {
         this.router.navigate(['/projects', projectId]);
     };
     ProjectListComponent.prototype.viewTasks = function (project) {
+        if (!project.tasks)
+            project.tasks = new Array();
         this.selectedProject = project;
+    };
+    ProjectListComponent.prototype.taskModified = function () {
+        this.projectService.update(this.selectedProject)
+            .catch(function (err) {
+            console.error(err);
+        });
     };
     ProjectListComponent = __decorate([
         core_1.Component({

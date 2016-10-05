@@ -1,8 +1,7 @@
-import {Task} from '../models/task';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectDataService } from '../data/project-data.service';
-import { Project } from '../models/models';
+import { Project, Task } from '../models/models';
 
 @Component({
     moduleId: module.id,
@@ -21,14 +20,22 @@ export class ProjectListComponent implements OnInit {
     ngOnInit() {
         this.projectService.getAll()
             .then((p: Project[]) => this.projects = p)
-            .catch((err: any)=> console.error("error getting all projects"));
+            .catch((err: any) => console.error("error getting all projects"));
     }
 
     goToProject(projectId: number) {
         this.router.navigate(['/projects', projectId]);
     }
 
-    viewTasks(project){
+    viewTasks(project: Project) {
+        if (!project.tasks) project.tasks = new Array<Task>();
         this.selectedProject = project;
+    }
+
+    taskModified() {
+        this.projectService.update(this.selectedProject)
+            .catch((err: any) => {
+                console.error(err);
+            });
     }
 }

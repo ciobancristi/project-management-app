@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Task } from '../models/models';
 
@@ -8,15 +8,25 @@ import { Task } from '../models/models';
     templateUrl: 'task-list.component.html'
 })
 export class TaskListComponent implements OnInit {
-    @Input() private tasks: any[];
+    @Input() tasks: any[];
+    @Output() taskModifiedEvent = new EventEmitter(); 
     private newTask: Task;
+    private selectedTask: Task;
 
     constructor() { }
 
-    ngOnInit() { 
-    }
+    ngOnInit() { }
 
     addTask(){
         this.newTask = new Task;
+    }
+
+    taskModified(newTask: Task){
+        this.tasks.push(newTask);
+        this.taskModifiedEvent.emit();
+    }
+
+    editTask(task: any){
+        this.selectedTask = task;
     }
 }

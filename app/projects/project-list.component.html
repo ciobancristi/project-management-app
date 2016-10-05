@@ -21,7 +21,7 @@
         </section>
     </div>
     <div class="col-xs-6" *ngIf="selectedProject">
-        <task-list [tasks]="selectedProject.tasks"></task-list>
+        <task-list [tasks]="selectedProject.tasks" (taskModifiedEvent)="taskModified()"></task-list>
     </div>
 </div>
 <div class="row" style="margin-top:25px;">

@@ -1,11 +1,14 @@
 <label>Tasks</label>
-<div *ngIf="!tasks">
+<div *ngIf="tasks.length === 0">
     No tasks for this project
 </div>
-<div *ngIf="tasks">
+<div *ngIf="tasks.length > 0">
     <accordion>
         <accordion-group *ngFor="let task of tasks" [heading]="task.name">
-            <task-details [task]="task"></task-details>
+            <task-details [task]="task" [editMode]="selectedTask === task"></task-details>
+            <div *ngIf="!selectedTask">
+                <button class="btn btn-primary" (click)="editTask(task)">Edit</button>
+            </div>
         </accordion-group>
     </accordion>
 </div>
@@ -13,5 +16,5 @@
     <button class="btn btn-primary" (click)="addTask()">Add Task</button>
 </div>
 <div>
-    <task-details [task]="newTask" [editMode]="true"></task-details>
+    <task-details [task]="newTask" [editMode]="true" (taskModified)="taskModified($event)"></task-details>
 </div>
