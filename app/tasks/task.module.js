@@ -11,21 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
 var data_module_1 = require('../data/data.module');
-var project_list_component_1 = require('./project-list.component');
-var project_detail_component_1 = require('./project-detail.component');
-var project_routing_1 = require('./project.routing');
-var ProjectModule = (function () {
-    function ProjectModule() {
+var task_list_component_1 = require('./task-list.component');
+var TaskListModule = (function () {
+    function TaskListModule() {
     }
-    ProjectModule = __decorate([
+    TaskListModule = __decorate([
         core_1.NgModule({
-            imports: [project_routing_1.routing, shared_module_1.SharedModule, data_module_1.DataModule],
-            declarations: [project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
-            providers: []
+            imports: [shared_module_1.SharedModule, data_module_1.DataModule],
+            exports: [],
+            declarations: [task_list_component_1.TaskListComponent],
+            providers: [],
         }), 
         __metadata('design:paramtypes', [])
-    ], ProjectModule);
-    return ProjectModule;
+    ], TaskListModule);
+    return TaskListModule;
 }());
-exports.ProjectModule = ProjectModule;
-//# sourceMappingURL=project.module.js.map
+exports.TaskListModule = TaskListModule;
+//# sourceMappingURL=task.module.js.map

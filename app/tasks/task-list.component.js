@@ -9,23 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var shared_module_1 = require('../shared/shared.module');
-var data_module_1 = require('../data/data.module');
-var project_list_component_1 = require('./project-list.component');
-var project_detail_component_1 = require('./project-detail.component');
-var project_routing_1 = require('./project.routing');
-var ProjectModule = (function () {
-    function ProjectModule() {
+var TaskListComponent = (function () {
+    function TaskListComponent() {
     }
-    ProjectModule = __decorate([
-        core_1.NgModule({
-            imports: [project_routing_1.routing, shared_module_1.SharedModule, data_module_1.DataModule],
-            declarations: [project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
-            providers: []
+    TaskListComponent.prototype.ngOnInit = function () { };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Array)
+    ], TaskListComponent.prototype, "tasks", void 0);
+    TaskListComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'task-list',
+            templateUrl: 'task-list.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], ProjectModule);
-    return ProjectModule;
+    ], TaskListComponent);
+    return TaskListComponent;
 }());
-exports.ProjectModule = ProjectModule;
-//# sourceMappingURL=project.module.js.map
+exports.TaskListComponent = TaskListComponent;
+//# sourceMappingURL=task-list.component.js.map

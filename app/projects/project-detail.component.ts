@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { ToasterService} from 'angular2-toaster';
-import { ProjectDataService } from './project-data.service';
+//import { ProjectDataService } from './project-data.service';
 import { Project } from '../models/models'
+import { ProjectDataService } from '../data/project-data.service';
 
 @Component({
     moduleId: module.id,
@@ -20,7 +21,8 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private router: Router,
         private projectService: ProjectDataService,
-        private toastr: ToasterService) { }
+        private toastr: ToasterService) {
+    }
 
     ngOnInit() {
         let id: string;

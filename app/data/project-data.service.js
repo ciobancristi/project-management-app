@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,23 +14,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var shared_module_1 = require('../shared/shared.module');
-var data_module_1 = require('../data/data.module');
-var project_list_component_1 = require('./project-list.component');
-var project_detail_component_1 = require('./project-detail.component');
-var project_routing_1 = require('./project.routing');
-var ProjectModule = (function () {
-    function ProjectModule() {
+var repository_1 = require('./repository');
+var ProjectDataService = (function (_super) {
+    __extends(ProjectDataService, _super);
+    function ProjectDataService() {
+        _super.call(this, "projects", "project");
     }
-    ProjectModule = __decorate([
-        core_1.NgModule({
-            imports: [project_routing_1.routing, shared_module_1.SharedModule, data_module_1.DataModule],
-            declarations: [project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
-            providers: []
-        }), 
+    ProjectDataService = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], ProjectModule);
-    return ProjectModule;
-}());
-exports.ProjectModule = ProjectModule;
-//# sourceMappingURL=project.module.js.map
+    ], ProjectDataService);
+    return ProjectDataService;
+}(repository_1.Repository));
+exports.ProjectDataService = ProjectDataService;
+//# sourceMappingURL=project-data.service.js.map
