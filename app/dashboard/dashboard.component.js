@@ -14,7 +14,14 @@ var DashboardComponent = (function () {
     function DashboardComponent(toastr) {
         this.toastr = toastr;
     }
-    DashboardComponent.prototype.ngOnInit = function () { };
+    DashboardComponent.prototype.ngOnInit = function () {
+        this.options = {
+            title: { text: 'simple chart' },
+            series: [{
+                    data: [29.9, 71.5, 106.4, 129],
+                }]
+        };
+    };
     DashboardComponent.prototype.popToast = function () {
         this.toastr.pop('success', 'MSG 1', 'msg 2');
     };
