@@ -1,9 +1,4 @@
 "use strict";
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -78,21 +73,4 @@ var ClientDetailComponent = (function () {
     return ClientDetailComponent;
 }());
 exports.ClientDetailComponent = ClientDetailComponent;
-//TODO: decide to keep or not
-var SelectItem = (function () {
-    function SelectItem(id, name) {
-        this.id = id;
-        this.name = name;
-    }
-    return SelectItem;
-}());
-exports.SelectItem = SelectItem;
-var SelectGroupItem = (function (_super) {
-    __extends(SelectGroupItem, _super);
-    function SelectGroupItem() {
-        _super.apply(this, arguments);
-    }
-    return SelectGroupItem;
-}(SelectItem));
-exports.SelectGroupItem = SelectGroupItem;
 //# sourceMappingURL=client-detail.component.js.map

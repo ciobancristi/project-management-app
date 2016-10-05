@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var angular2_toaster_1 = require('angular2-toaster');
-var project_data_service_1 = require('../data/project-data.service');
 var models_1 = require('../models/models');
+var project_data_service_1 = require('../data/project-data.service');
 var ProjectDetailComponent = (function () {
     function ProjectDetailComponent(route, router, projectService, toastr) {
         this.route = route;

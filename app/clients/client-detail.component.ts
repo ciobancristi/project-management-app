@@ -11,7 +11,7 @@ import { ProjectDataService } from '../data/project-data.service';
 })
 export class ClientDetailComponent implements OnInit {
     @Input() client: Client;
-    projects: SelectItem[];
+    projects: Project[];
 
     constructor(private clientService: ClientDataService,
         private toastr: ToasterService,
@@ -55,18 +55,4 @@ export class ClientDetailComponent implements OnInit {
                 });
         }
     }
-}
-
-//TODO: decide to keep or not
-export class SelectItem {
-    id?: string;
-    name?: string;
-    constructor(id: string, name: string) {
-        this.id = id;
-        this.name = name;
-    }
-}
-
-export class SelectGroupItem extends SelectItem {
-    children?: SelectItem[];
 }

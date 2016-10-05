@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
-var project_data_service_1 = require('../data/project-data.service');
+var data_module_1 = require('../data/data.module');
 var project_list_component_1 = require('./project-list.component');
 var project_detail_component_1 = require('./project-detail.component');
 var project_routing_1 = require('./project.routing');
@@ -19,9 +19,9 @@ var ProjectModule = (function () {
     }
     ProjectModule = __decorate([
         core_1.NgModule({
-            imports: [project_routing_1.routing, shared_module_1.SharedModule],
+            imports: [project_routing_1.routing, shared_module_1.SharedModule, data_module_1.DataModule],
             declarations: [project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
-            providers: [project_data_service_1.ProjectDataService]
+            providers: []
         }), 
         __metadata('design:paramtypes', [])
     ], ProjectModule);

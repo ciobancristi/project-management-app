@@ -1,4 +1,9 @@
 "use strict";
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,80 +14,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var PouchDB = require('pouchdb');
-var ClientDataService = (function () {
-    //TODO: make _db injectable
+var repository_1 = require('./repository');
+var ClientDataService = (function (_super) {
+    __extends(ClientDataService, _super);
     function ClientDataService() {
-        var _this = this;
-        this.onDatabaseChange = function (change) {
-            var index = _this._clients.findIndex(function (p) { return p._id === change.id; });
-            var client = _this._clients[index];
-            if (change.deleted) {
-                if (client) {
-                    _this._clients.splice(index, 1); // delete
-                }
-            }
-            else {
-                change.doc.created = new Date(change.doc.created);
-                if (client && client._id === change.id) {
-                    _this._clients[index] = change.doc; // update
-                }
-                else {
-                    _this._clients.splice(index, 0, change.doc); // insert
-                }
-            }
-        };
-        this._db = new PouchDB('clients');
+        _super.call(this, "clients", "client");
     }
-    ClientDataService.prototype.add = function (client) {
-        client._id = this.createId();
-        client.created = new Date();
-        ;
-        return this._db.put(client);
-    };
-    ClientDataService.prototype.delete = function (client) {
-        return this._db.remove(client);
-    };
-    ClientDataService.prototype.update = function (client) {
-        return this._db.put(client);
-    };
-    ClientDataService.prototype.get = function (clientId) {
-        if (!this._clients) {
-            return this._db.get(clientId);
-        }
-        else {
-            return Promise.resolve(this._clients
-                .find(function (p) { return p._id === clientId; }));
-        }
-    };
-    ClientDataService.prototype.getAll = function () {
-        var _this = this;
-        if (!this._clients) {
-            return this._db.allDocs({ include_docs: true })
-                .then(function (docs) {
-                _this._clients = docs.rows.map(function (row) {
-                    row.doc.created = new Date(row.doc.created);
-                    return row.doc;
-                });
-                // Listen for changes on the database.
-                _this._db.changes({ live: true, since: 'now', include_docs: true })
-                    .on('change', _this.onDatabaseChange);
-                return _this._clients;
-            });
-        }
-        else {
-            // Return cached data as a promise
-            return Promise.resolve(this._clients);
-        }
-    };
-    ClientDataService.prototype.createId = function () {
-        return 'client_' + new Date().getTime();
-    };
     ClientDataService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])
     ], ClientDataService);
     return ClientDataService;
-}());
+}(repository_1.Repository));
 exports.ClientDataService = ClientDataService;
 //# sourceMappingURL=client-data.service.js.map

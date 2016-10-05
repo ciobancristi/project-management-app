@@ -1,0 +1,9 @@
+<h2>Tasks</h2>
+
+<div *ngIf="tasks">
+    <accordion>
+        <accordion-group *ngFor="let task of tasks" [heading]="task.name">
+            <task-details [task]="task"></task-details>
+        </accordion-group>
+    </accordion>
+</div>
