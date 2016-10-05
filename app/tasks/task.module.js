@@ -12,19 +12,19 @@ var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
 var data_module_1 = require('../data/data.module');
 var task_list_component_1 = require('./task-list.component');
-var TaskListModule = (function () {
-    function TaskListModule() {
+var TaskModule = (function () {
+    function TaskModule() {
     }
-    TaskListModule = __decorate([
+    TaskModule = __decorate([
         core_1.NgModule({
             imports: [shared_module_1.SharedModule, data_module_1.DataModule],
-            exports: [],
+            exports: [task_list_component_1.TaskListComponent],
             declarations: [task_list_component_1.TaskListComponent],
             providers: [],
         }), 
         __metadata('design:paramtypes', [])
-    ], TaskListModule);
-    return TaskListModule;
+    ], TaskModule);
+    return TaskModule;
 }());
-exports.TaskListModule = TaskListModule;
+exports.TaskModule = TaskModule;
 //# sourceMappingURL=task.module.js.map

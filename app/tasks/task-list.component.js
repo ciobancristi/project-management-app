@@ -12,7 +12,14 @@ var core_1 = require('@angular/core');
 var TaskListComponent = (function () {
     function TaskListComponent() {
     }
-    TaskListComponent.prototype.ngOnInit = function () { };
+    TaskListComponent.prototype.ngOnInit = function () {
+        this.tasks = [
+            { name: "1st task", status: "In progress", description: "Lorem ipsum ssssss" },
+            { name: "2nd task", status: "In progress", description: "Lorem ipsum ssssss" },
+            { name: "3rd task", status: "In progress", description: "Lorem ipsum ssssss" },
+            { name: "4th task", status: "In progress", description: "Lorem ipsum ssssss" }
+        ];
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', Array)

@@ -6,8 +6,8 @@ import { TaskListComponent }   from './task-list.component';
 
 @NgModule({
     imports: [SharedModule, DataModule],
-    exports: [],
+    exports: [TaskListComponent],
     declarations: [TaskListComponent],
     providers: [],
 })
-export class TaskListModule { }
+export class TaskModule { }

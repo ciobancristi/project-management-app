@@ -13,7 +13,9 @@
     'raven-js':                   'node_modules/raven-js/dist',
     'angular2-toaster':           'node_modules/angular2-toaster',
     'angular2-highcharts':        'node_modules/angular2-highcharts/dist',
-    'highcharts/highstock.src':   'node_modules/highcharts/highstock.js'
+    'highcharts/highstock.src':   'node_modules/highcharts/highstock.js',
+    'ng2-bootstrap':              'node_modules/ng2-bootstrap/',
+    'moment':                     'node_modules/moment/moment.js'
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
@@ -23,7 +25,8 @@
     'pouchdb':                    { main: 'pouchdb.js', defaultExtension: 'js' },
     'raven-js':                   { main: 'raven.js', defaultExtension: 'js' },
     'angular2-toaster':           { main: 'angular2-toaster.js', defaultExtension: 'js' },
-    'angular2-highcharts':        { main: './index.js',defaultExtension:'js'}
+    'angular2-highcharts':        { main: './index.js',defaultExtension: 'js'},
+    'ng2-bootstrap':              { main: './ng2-bootstrap', defaultExtension: 'js'}
   };
   var ngPackageNames = [
     'common',

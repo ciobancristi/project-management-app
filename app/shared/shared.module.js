@@ -12,13 +12,14 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var angular2_toaster_1 = require('angular2-toaster');
+var ng2_bootstrap_1 = require('ng2-bootstrap');
 var SharedModule = (function () {
     function SharedModule() {
     }
     SharedModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, angular2_toaster_1.ToasterModule],
-            exports: [common_1.CommonModule, forms_1.FormsModule, angular2_toaster_1.ToasterModule]
+            imports: [common_1.CommonModule, angular2_toaster_1.ToasterModule, ng2_bootstrap_1.Ng2BootstrapModule],
+            exports: [common_1.CommonModule, forms_1.FormsModule, angular2_toaster_1.ToasterModule, ng2_bootstrap_1.Ng2BootstrapModule]
         }), 
         __metadata('design:paramtypes', [])
     ], SharedModule);
