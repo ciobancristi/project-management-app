@@ -13,11 +13,25 @@ var core_1 = require('@angular/core');
 var TaskDetailsComponent = (function () {
     function TaskDetailsComponent() {
     }
-    TaskDetailsComponent.prototype.ngOnInit = function () { };
+    TaskDetailsComponent.prototype.ngOnInit = function () {
+        //TODO: get data from service
+        this.statuses = ['In Progress', 'Finished'];
+        this.priorities = ['Critical', 'High', 'Normal', 'Low'];
+    };
+    //TODO: add selected deadline validation
+    TaskDetailsComponent.prototype.addTask = function () {
+    };
+    TaskDetailsComponent.prototype.cancel = function () {
+        this.task = undefined;
+    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', models_1.Task)
     ], TaskDetailsComponent.prototype, "task", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', Boolean)
+    ], TaskDetailsComponent.prototype, "editMode", void 0);
     TaskDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

@@ -31,7 +31,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
             if (id != "newProject") {
                 this.projectService.get(id)
                     .then((project: Project) => {
-                        this.project = project; console.log(project)
+                        this.project = project;
                     })
                     .catch((err: any) => console.error(err));
             } else {
@@ -40,7 +40,7 @@ export class ProjectDetailComponent implements OnInit, OnDestroy {
         });
 
         //TODO: get data from service
-        this.statuses = ['In Progress', 'Finished']
+        this.statuses = ['In Progress', 'Finished'];
 
         this.currencies = ['USD', 'RON', 'EUR'];
     }

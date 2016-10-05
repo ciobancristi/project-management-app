@@ -8,8 +8,24 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class TaskDetailsComponent implements OnInit {
     @Input() task: Task;
+    @Input() editMode: boolean;
+    statuses: string[];
+    priorities: string[];
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        //TODO: get data from service
+        this.statuses = ['In Progress', 'Finished'];
+        this.priorities = ['Critical', 'High', 'Normal', 'Low'];
+    }
+
+    //TODO: add selected deadline validation
+    addTask(){
+        
+    }
+
+    cancel(){
+        this.task = undefined;
+    }
 }

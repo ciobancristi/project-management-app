@@ -9,15 +9,14 @@ import { Task } from '../models/models';
 })
 export class TaskListComponent implements OnInit {
     @Input() private tasks: any[];
+    private newTask: Task;
 
     constructor() { }
 
     ngOnInit() { 
-        this.tasks = [
-            { name: "1st task", status: "In progress", description: "Lorem ipsum ssssss"},
-            { name: "2nd task", status: "In progress", description: "Lorem ipsum ssssss"},
-            { name: "3rd task", status: "In progress", description: "Lorem ipsum ssssss"},
-            { name: "4th task", status: "In progress", description: "Lorem ipsum ssssss"}
-        ]
+    }
+
+    addTask(){
+        this.newTask = new Task;
     }
 }

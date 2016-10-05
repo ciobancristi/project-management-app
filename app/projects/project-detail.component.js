@@ -29,7 +29,6 @@ var ProjectDetailComponent = (function () {
                 _this.projectService.get(id)
                     .then(function (project) {
                     _this.project = project;
-                    console.log(project);
                 })
                     .catch(function (err) { return console.error(err); });
             }

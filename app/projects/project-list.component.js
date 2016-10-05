@@ -25,6 +25,9 @@ var ProjectListComponent = (function () {
     ProjectListComponent.prototype.goToProject = function (projectId) {
         this.router.navigate(['/projects', projectId]);
     };
+    ProjectListComponent.prototype.viewTasks = function (project) {
+        this.selectedProject = project;
+    };
     ProjectListComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

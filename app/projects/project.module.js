@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var task_module_1 = require('../tasks/task.module');
 var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
 var data_module_1 = require('../data/data.module');
@@ -19,7 +20,7 @@ var ProjectModule = (function () {
     }
     ProjectModule = __decorate([
         core_1.NgModule({
-            imports: [project_routing_1.routing, shared_module_1.SharedModule, data_module_1.DataModule],
+            imports: [project_routing_1.routing, shared_module_1.SharedModule, data_module_1.DataModule, task_module_1.TaskModule],
             declarations: [project_detail_component_1.ProjectDetailComponent, project_list_component_1.ProjectListComponent],
             providers: []
         }), 

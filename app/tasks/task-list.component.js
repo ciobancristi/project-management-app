@@ -9,16 +9,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var models_1 = require('../models/models');
 var TaskListComponent = (function () {
     function TaskListComponent() {
     }
     TaskListComponent.prototype.ngOnInit = function () {
-        this.tasks = [
-            { name: "1st task", status: "In progress", description: "Lorem ipsum ssssss" },
-            { name: "2nd task", status: "In progress", description: "Lorem ipsum ssssss" },
-            { name: "3rd task", status: "In progress", description: "Lorem ipsum ssssss" },
-            { name: "4th task", status: "In progress", description: "Lorem ipsum ssssss" }
-        ];
+    };
+    TaskListComponent.prototype.addTask = function () {
+        this.newTask = new models_1.Task;
     };
     __decorate([
         core_1.Input(), 

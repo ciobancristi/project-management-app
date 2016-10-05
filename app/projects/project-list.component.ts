@@ -1,3 +1,4 @@
+import {Task} from '../models/task';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProjectDataService } from '../data/project-data.service';
@@ -10,6 +11,7 @@ import { Project } from '../models/models';
 })
 export class ProjectListComponent implements OnInit {
     private projects: Project[];
+    private selectedProject: Project;
 
     constructor(
         private projectService: ProjectDataService,
@@ -24,5 +26,9 @@ export class ProjectListComponent implements OnInit {
 
     goToProject(projectId: number) {
         this.router.navigate(['/projects', projectId]);
+    }
+
+    viewTasks(project){
+        this.selectedProject = project;
     }
 }

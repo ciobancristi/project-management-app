@@ -1,9 +1,17 @@
-<h2>Tasks</h2>
-
+<label>Tasks</label>
+<div *ngIf="!tasks">
+    No tasks for this project
+</div>
 <div *ngIf="tasks">
     <accordion>
         <accordion-group *ngFor="let task of tasks" [heading]="task.name">
             <task-details [task]="task"></task-details>
         </accordion-group>
     </accordion>
+</div>
+<div>
+    <button class="btn btn-primary" (click)="addTask()">Add Task</button>
+</div>
+<div>
+    <task-details [task]="newTask" [editMode]="true"></task-details>
 </div>
