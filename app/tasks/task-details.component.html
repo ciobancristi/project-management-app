@@ -1,0 +1,39 @@
+<style>
+    .padded {
+        padding: 15px;
+    }
+</style>
+<div class="padded" *ngIf="task">
+    <div class="row">
+        <label>Priority: </label> {{task.priority}}
+    </div>
+    <div class="row">
+        <label>Status: </label> {{task.status}}
+    </div>
+    <div class="row">
+        <label>Estimated: </label> {{task.estimation}}
+    </div>
+    <div class="row">
+        <label>Logged Hours: </label> {{task.loggedHours}}
+    </div>
+    <div class="row">
+        <label>Deadline: </label> {{task.deadline}}
+    </div>
+    <div class="row">
+        <label>Dates</label>
+        <div class="padded">
+            <div class="">
+                <label>Created: </label> {{task.created | date}}
+            </div>
+            <div class="">
+                <label>Updated: </label> {{task.updated | date}}
+            </div>
+            <div class="" *ngIf="task.finished">
+                <label>Finished: </label> {{task.finished | date}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <label>Description:</label> {{task.description}}
+    </div>
+</div>

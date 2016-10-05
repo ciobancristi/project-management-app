@@ -8,24 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var task_details_component_1 = require('./task-details.component');
+var models_1 = require('../models/models');
 var core_1 = require('@angular/core');
-var shared_module_1 = require('../shared/shared.module');
-var data_module_1 = require('../data/data.module');
-var task_list_component_1 = require('./task-list.component');
-var TaskModule = (function () {
-    function TaskModule() {
+var TaskDetailsComponent = (function () {
+    function TaskDetailsComponent() {
     }
-    TaskModule = __decorate([
-        core_1.NgModule({
-            imports: [shared_module_1.SharedModule, data_module_1.DataModule],
-            exports: [task_list_component_1.TaskListComponent],
-            declarations: [task_list_component_1.TaskListComponent, task_details_component_1.TaskDetailsComponent],
-            providers: [],
+    TaskDetailsComponent.prototype.ngOnInit = function () { };
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', models_1.Task)
+    ], TaskDetailsComponent.prototype, "task", void 0);
+    TaskDetailsComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'task-details',
+            templateUrl: 'task-details.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], TaskModule);
-    return TaskModule;
+    ], TaskDetailsComponent);
+    return TaskDetailsComponent;
 }());
-exports.TaskModule = TaskModule;
-//# sourceMappingURL=task.module.js.map
+exports.TaskDetailsComponent = TaskDetailsComponent;
+//# sourceMappingURL=task-details.component.js.map

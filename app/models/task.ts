@@ -2,13 +2,13 @@ export class Task {
     _id: string;
     name: string;
     estimation: number;
-    duration: number;
+    loggedHours: number;
     status: string;
     priority: string;
     description: string;
     comments: string;
     created: Date;
-    started: Date;
+    updated: Date;
     finished: Date;
     deadline: Date;
 };

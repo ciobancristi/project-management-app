@@ -1,0 +1,36 @@
+<div *ngIf="task">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            
+        </div>
+        <div class="panel-body">
+            <label></label>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" bsModal #staticModal="bs-modal" [config]="{backdrop: 'static'}"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-label="Close" (click)="staticModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">
+            <h3 class="panel-title">Log Work: {{task.name}}</h3>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="" class="col-xs-2 control-label">Time spent</label>
+                <div class="col-xs-10">
+                    <input type="number" [(ngModel)]="" class="">
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

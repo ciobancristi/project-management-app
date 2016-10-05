@@ -8,24 +8,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var task_details_component_1 = require('./task-details.component');
 var core_1 = require('@angular/core');
-var shared_module_1 = require('../shared/shared.module');
-var data_module_1 = require('../data/data.module');
-var task_list_component_1 = require('./task-list.component');
-var TaskModule = (function () {
-    function TaskModule() {
+var LogTaskComponent = (function () {
+    function LogTaskComponent() {
     }
-    TaskModule = __decorate([
-        core_1.NgModule({
-            imports: [shared_module_1.SharedModule, data_module_1.DataModule],
-            exports: [task_list_component_1.TaskListComponent],
-            declarations: [task_list_component_1.TaskListComponent, task_details_component_1.TaskDetailsComponent],
-            providers: [],
+    LogTaskComponent.prototype.ngOnInit = function () { };
+    LogTaskComponent = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'log-task',
+            templateUrl: 'log-task.component.html'
         }), 
         __metadata('design:paramtypes', [])
-    ], TaskModule);
-    return TaskModule;
+    ], LogTaskComponent);
+    return LogTaskComponent;
 }());
-exports.TaskModule = TaskModule;
-//# sourceMappingURL=task.module.js.map
+exports.LogTaskComponent = LogTaskComponent;
+//# sourceMappingURL=log-task.component.js.map

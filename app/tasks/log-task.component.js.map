@@ -1,0 +1,1 @@
+{"version":3,"file":"log-task.component.js","sourceRoot":"","sources":["log-task.component.ts"],"names":[],"mappings":";;;;;;;;;;AAAA,qBAAkC,eAAe,CAAC,CAAA;AAOlD;IACI;IAAgB,CAAC;IAEjB,mCAAQ,GAAR,cAAa,CAAC;IARlB;QAAC,gBAAS,CAAC;YACP,QAAQ,EAAE,MAAM,CAAC,EAAE;YACnB,QAAQ,EAAE,UAAU;YACpB,WAAW,EAAE,yBAAyB;SACzC,CAAC;;wBAAA;IAKF,uBAAC;AAAD,CAAC,AAJD,IAIC;AAJY,wBAAgB,mBAI5B,CAAA"}

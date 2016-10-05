@@ -3,12 +3,7 @@
 <div *ngIf="tasks">
     <accordion>
         <accordion-group *ngFor="let task of tasks" [heading]="task.name">
-            <div>
-                <label for="status">Status: </label> {{task.status}}
-            </div>
-            <div>
-                <label for="">Description:</label> {{task.description}}
-            </div>
+            <task-details [task]="task"></task-details>
         </accordion-group>
     </accordion>
 </div>
