@@ -14,15 +14,20 @@ var TaskListComponent = (function () {
     function TaskListComponent() {
         this.taskModifiedEvent = new core_1.EventEmitter();
     }
-    TaskListComponent.prototype.ngOnInit = function () { };
+    TaskListComponent.prototype.ngOnInit = function () {
+    };
     TaskListComponent.prototype.addTask = function () {
         this.newTask = new models_1.Task;
+        this.editMode = false;
     };
     TaskListComponent.prototype.taskModified = function (newTask) {
         this.tasks.push(newTask);
         this.taskModifiedEvent.emit();
     };
     TaskListComponent.prototype.editTask = function (task) {
+        task.edit = true;
+    };
+    TaskListComponent.prototype.onSelect = function (task) {
         this.selectedTask = task;
     };
     __decorate([

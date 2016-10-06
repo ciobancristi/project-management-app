@@ -1,0 +1,22 @@
+.padded {
+    padding: 15px;
+}
+
+datepicker {
+    position: absolute;
+    z-index: 1001;
+}
+
+datepicker .btn {
+    padding: 5px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+datepicker .btn .text-muted {
+    line-height: inherit !important;
+}
+
+datepicker .well {
+    border: 3px solid #2b669a !important;
+}

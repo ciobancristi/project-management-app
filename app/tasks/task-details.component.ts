@@ -21,7 +21,7 @@ export class TaskDetailsComponent implements OnInit {
         this.priorities = ['Critical', 'High', 'Normal', 'Low'];
     }
 
-    //TODO: add selected deadline validation
+    //TODO: add deadline validation
     save() {
         this.setDates();
         this.taskModified.emit(this.task);
@@ -35,6 +35,5 @@ export class TaskDetailsComponent implements OnInit {
     }
 
     cancel() {
-        this.task = undefined;
     }
 }

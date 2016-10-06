@@ -1,61 +1,43 @@
-<style>
-    .padded {
-        padding: 15px;
-    }
-    
-    datepicker {
-        position: absolute;
-        z-index: 1001;
-    }
-    
-    datepicker .btn {
-        padding: 5px !important;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-    
-    datepicker .btn .text-muted {
-        line-height: inherit !important;
-    }
-    
-    datepicker .well {
-        border: 3px solid #2b669a !important;
-    }
-</style>
 <div class="padded" *ngIf="task">
     <div *ngIf="!editMode">
-        <div class="row">
-            <label>Priority: </label> {{task.priority}}
-        </div>
-        <div class="row">
-            <label>Status: </label> {{task.status}}
-        </div>
-        <div class="row">
-            <label>Estimated: </label> {{task.estimation}}
-        </div>
-        <div class="row">
-            <label>Logged Hours: </label> {{task.loggedHours}}
-        </div>
-        <div class="row">
-            <label>Deadline: </label> {{task.deadline | date}}
-        </div>
-        <div class="row">
-            <label>Dates</label>
-            <div class="padded">
-                <div class="">
-                    <label>Created: </label> {{task.created | date}}
+        <tabset>
+            <tab>
+                <div class="col-xs-6">
+                    <div class="">
+                        <label>Priority: </label> {{task.priority}}
+                    </div>
+                    <div class="">
+                        <label>Status: </label> {{task.status}}
+                    </div>
+                    <div class="">
+                        <label>Estimated: </label> {{task.estimation}}
+                    </div>
+                    <div class="">
+                        <label>Logged Hours: </label> {{task.loggedHours}}
+                    </div>
                 </div>
-                <div class="">
-                    <label>Updated: </label> {{task.updated | date}}
+                <div class="col-xs-6">
+                    <div class="">
+                        <label>Deadline: </label> {{task.deadline | date}}
+                    </div>
+                    <div class="">
+                        <label>Created: </label> {{task.created | date}}
+                    </div>
+                    <div *ngIf="!task.finished">
+                        <label>Updated: </label> {{task.updated | date}}
+                    </div>
+                    <div *ngIf="task.finished">
+                        <label>Finished: </label> {{task.finished | date}}
+                    </div>
                 </div>
-                <div class="" *ngIf="task.finished">
-                    <label>Finished: </label> {{task.finished | date}}
+                <div class="col-xs-12">
+                    <label>Description:</label> {{task.description}}
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <label>Description:</label> {{task.description}}
-        </div>
+            </tab>
+            <tab>
+                
+            </tab>
+        </tabset>
     </div>
 
     <form class="form-horizontal" *ngIf="editMode" #taskDetailForm="ngForm">
@@ -83,7 +65,7 @@
             <label class="control-label col-xs-3">Deadline </label>
             <div class="col-xs-9">
                 <div class="input-group" dropdown dropdown-append-to-body>
-                    <input type="text" class="form-control input-sm" name="inputBeginDate" value="{{task.deadline | date}}" />
+                    <input type="text" class="form-control" name="inputBeginDate" value="{{task.deadline | date}}" />
                     <span id="btn-append-to-body" type="button" class="input-group-addon" dropdownToggle>
                        <i class="fa fa-calendar" aria-hidden="true"></i>
                     </span>

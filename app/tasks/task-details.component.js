@@ -19,7 +19,7 @@ var TaskDetailsComponent = (function () {
         this.statuses = ['In Progress', 'Finished'];
         this.priorities = ['Critical', 'High', 'Normal', 'Low'];
     };
-    //TODO: add selected deadline validation
+    //TODO: add deadline validation
     TaskDetailsComponent.prototype.save = function () {
         this.setDates();
         this.taskModified.emit(this.task);
@@ -32,7 +32,6 @@ var TaskDetailsComponent = (function () {
         this.task.deadline = new Date(this.task.deadline.toString());
     };
     TaskDetailsComponent.prototype.cancel = function () {
-        this.task = undefined;
     };
     __decorate([
         core_1.Input(), 

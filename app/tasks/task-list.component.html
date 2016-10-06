@@ -3,18 +3,19 @@
     No tasks for this project
 </div>
 <div *ngIf="tasks.length > 0">
-    <accordion>
-        <accordion-group *ngFor="let task of tasks" [heading]="task.name">
-            <task-details [task]="task" [editMode]="selectedTask === task"></task-details>
-            <div *ngIf="!selectedTask">
+    <accordion [closeOthers]="true">
+        <accordion-group *ngFor="let task of tasks" [heading]="task.name" (click)="onSelect(task)">
+            <task-details [task]="selectedTask" [editMode]="task.edit"></task-details>
+            <div *ngIf="!editMode" class="col-xs-12">
                 <button class="btn btn-primary" (click)="editTask(task)">Edit</button>
             </div>
         </accordion-group>
     </accordion>
 </div>
-<div>
+<div style="margin-top:10px">
     <button class="btn btn-primary" (click)="addTask()">Add Task</button>
 </div>
 <div>
-    <task-details [task]="newTask" [editMode]="true" (taskModified)="taskModified($event)"></task-details>
+    <task-details [task]="newTask" [editMode]="true" (taskModified)="taskModified($event)">
+    </task-details>
 </div>
