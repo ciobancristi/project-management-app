@@ -1,7 +1,12 @@
+<style>
+    .tab-small > div.tab-content{
+        min-height: 100px;
+    }
+</style>
 <div class="padded" *ngIf="task">
     <div *ngIf="!editMode">
-        <tabset>
-            <tab>
+        <tabset class="tab-small">
+            <tab heading="Details">
                 <div class="col-xs-6">
                     <div class="">
                         <label>Priority: </label> {{task.priority}}
@@ -34,8 +39,11 @@
                     <label>Description:</label> {{task.description}}
                 </div>
             </tab>
-            <tab>
+            <tab heading="Work log">
                 
+            </tab>
+            <tab heading="Comments">
+
             </tab>
         </tabset>
     </div>

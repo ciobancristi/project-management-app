@@ -1,15 +1,12 @@
+import {Entity} from './entity';
 import { Task } from './task';
 
-export class Project {
-    _id: string;
-    name: string;
+export class Project extends Entity{
     description: string;
     currency: string;
     status: string;
     clientId: string;
     estimation: number;
     revenue: number;
-    created: Date;
-    edited: Date;
     tasks: Task[]
 }

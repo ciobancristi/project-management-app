@@ -19,7 +19,9 @@ var ProjectListComponent = (function () {
     ProjectListComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.projectService.getAll()
-            .then(function (p) { return _this.projects = p; })
+            .then(function (p) {
+            _this.projects = p;
+        })
             .catch(function (err) { return console.error("error getting all projects"); });
     };
     ProjectListComponent.prototype.goToProject = function (projectId) {

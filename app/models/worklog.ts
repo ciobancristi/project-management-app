@@ -1,8 +1,6 @@
-export class WorkLog{
-    _id: string;
-    name: string;
+import {Entity} from './entity';
+
+export class WorkLog extends Entity{
     hours: number;
     taskId: string;
-    created: Date;
-    edited: Date;
 }

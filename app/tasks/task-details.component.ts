@@ -30,7 +30,7 @@ export class TaskDetailsComponent implements OnInit {
     setDates() {
         let currentDate = new Date();
         if(!this.task.created) this.task.created = currentDate;
-        this.task.updated = currentDate;
+        this.task.edited = currentDate;
         this.task.deadline = new Date(this.task.deadline.toString());
     }
 

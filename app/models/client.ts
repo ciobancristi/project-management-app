@@ -1,7 +1,6 @@
-export class Client {
-    _id: string;
-    name: string;
+import {Entity} from './entity';
+
+export class Client extends Entity{
     email: string;
-    created: Date;
     projectIds: string[];
 }

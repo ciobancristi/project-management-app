@@ -16,8 +16,8 @@ export class Repository {
 
     add(entity: any) {
         let currentDate = new Date();
-        //project.created = currentDate;
-        //project.edited = currentDate;
+        entity.created = currentDate;
+        entity.edited = currentDate;
         entity._id = this.createId();
 
         return this._db.put(entity);
@@ -28,7 +28,7 @@ export class Repository {
     }
 
     update(entity: any) {
-        //project.edited = new Date();
+        entity.edited = new Date();
         return this._db.put(entity);
     }
 
@@ -46,8 +46,8 @@ export class Repository {
             return this._db.allDocs({ include_docs: true })
                 .then((docs: any) => {
                     this._entities = docs.rows.map((row: any) => {
-                        //row.doc.created = new Date(row.doc.created);
-                        //row.doc.edited = new Date(row.doc.edited);
+                        row.doc.created = new Date(row.doc.created);
+                        row.doc.edited = new Date(row.doc.edited);
 
                         return row.doc;
                     });
@@ -73,8 +73,8 @@ export class Repository {
                 this._entities.splice(index, 1); // delete
             }
         } else {
-            //change.doc.created = new Date(change.doc.created);
-            //change.doc.edited = new Date(change.doc.edited);
+            change.doc.created = new Date(change.doc.created);
+            change.doc.edited = new Date(change.doc.edited);
             if (entity && entity._id === change.id) {
                 this._entities[index] = change.doc; // update
             } else {

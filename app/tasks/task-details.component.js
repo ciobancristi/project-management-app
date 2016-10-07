@@ -28,7 +28,7 @@ var TaskDetailsComponent = (function () {
         var currentDate = new Date();
         if (!this.task.created)
             this.task.created = currentDate;
-        this.task.updated = currentDate;
+        this.task.edited = currentDate;
         this.task.deadline = new Date(this.task.deadline.toString());
     };
     TaskDetailsComponent.prototype.cancel = function () {

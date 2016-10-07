@@ -1,6 +1,6 @@
-export class Task {
-    _id: string;
-    name: string;
+import {Entity} from './entity';
+
+export class Task extends Entity{
     estimation: number;
     loggedHours: number;
     status: string;
@@ -8,8 +8,6 @@ export class Task {
     description: string;
     comments: string;
     workLogs: string[];
-    created: Date;
-    updated: Date;
     finished: Date;
     deadline: Date;
 };

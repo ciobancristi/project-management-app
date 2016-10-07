@@ -18,8 +18,9 @@ export class ProjectListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.projectService.getAll()
-            .then((p: Project[]) => this.projects = p)
+        this.projectService.getAll() 
+            .then((p: Project[]) => {
+                this.projects = p})
             .catch((err: any) => console.error("error getting all projects"));
     }
 

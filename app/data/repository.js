@@ -23,8 +23,8 @@ var Repository = (function () {
                 }
             }
             else {
-                //change.doc.created = new Date(change.doc.created);
-                //change.doc.edited = new Date(change.doc.edited);
+                change.doc.created = new Date(change.doc.created);
+                change.doc.edited = new Date(change.doc.edited);
                 if (entity && entity._id === change.id) {
                     _this._entities[index] = change.doc; // update
                 }
@@ -38,8 +38,8 @@ var Repository = (function () {
     }
     Repository.prototype.add = function (entity) {
         var currentDate = new Date();
-        //project.created = currentDate;
-        //project.edited = currentDate;
+        entity.created = currentDate;
+        entity.edited = currentDate;
         entity._id = this.createId();
         return this._db.put(entity);
     };
@@ -47,7 +47,7 @@ var Repository = (function () {
         return this._db.remove(entity);
     };
     Repository.prototype.update = function (entity) {
-        //project.edited = new Date();
+        entity.edited = new Date();
         return this._db.put(entity);
     };
     Repository.prototype.get = function (entityId) {
@@ -65,8 +65,8 @@ var Repository = (function () {
             return this._db.allDocs({ include_docs: true })
                 .then(function (docs) {
                 _this._entities = docs.rows.map(function (row) {
-                    //row.doc.created = new Date(row.doc.created);
-                    //row.doc.edited = new Date(row.doc.edited);
+                    row.doc.created = new Date(row.doc.created);
+                    row.doc.edited = new Date(row.doc.edited);
                     return row.doc;
                 });
                 // Listen for changes on the database.
