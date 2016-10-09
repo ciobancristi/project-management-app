@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'my-app',
@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['app/app.component.css']
 })
 
-export class AppComponent { }
+export class AppComponent {
+  //parent elem reference for ng2-bootrstrap modal
+  constructor( public viewContainerRef: ViewContainerRef) {}
+}

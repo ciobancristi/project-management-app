@@ -15,17 +15,26 @@ var TaskListComponent = (function () {
         this.taskModifiedEvent = new core_1.EventEmitter();
     }
     TaskListComponent.prototype.ngOnInit = function () {
+        this.newTask = new models_1.Task();
     };
     TaskListComponent.prototype.addTask = function () {
         this.newTask = new models_1.Task;
-        this.editMode = false;
     };
-    TaskListComponent.prototype.taskModified = function (newTask) {
-        this.tasks.push(newTask);
+    TaskListComponent.prototype.taskModified = function (task) {
+        if (!task._id) {
+            this.tasks.push(task);
+        }
+        else {
+            var indexOfTaskToEdit = this.tasks.findIndex(function (item) {
+                return task._id === item._id;
+            });
+            if (indexOfTaskToEdit > -1)
+                this.tasks[indexOfTaskToEdit] = task;
+        }
         this.taskModifiedEvent.emit();
     };
     TaskListComponent.prototype.editTask = function (task) {
-        task.edit = true;
+        //task.edit = true;
     };
     TaskListComponent.prototype.onSelect = function (task) {
         this.selectedTask = task;

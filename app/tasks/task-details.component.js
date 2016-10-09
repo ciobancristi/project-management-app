@@ -12,27 +12,8 @@ var models_1 = require('../models/models');
 var core_1 = require('@angular/core');
 var TaskDetailsComponent = (function () {
     function TaskDetailsComponent() {
-        this.taskModified = new core_1.EventEmitter();
     }
-    TaskDetailsComponent.prototype.ngOnInit = function () {
-        //TODO: get data from service
-        this.statuses = ['In Progress', 'Finished'];
-        this.priorities = ['Critical', 'High', 'Normal', 'Low'];
-    };
-    //TODO: add deadline validation
-    TaskDetailsComponent.prototype.save = function () {
-        this.setDates();
-        this.taskModified.emit(this.task);
-    };
-    TaskDetailsComponent.prototype.setDates = function () {
-        var currentDate = new Date();
-        if (!this.task.created)
-            this.task.created = currentDate;
-        this.task.edited = currentDate;
-        this.task.deadline = new Date(this.task.deadline.toString());
-    };
-    TaskDetailsComponent.prototype.cancel = function () {
-    };
+    TaskDetailsComponent.prototype.ngOnInit = function () { };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', models_1.Task)
@@ -41,10 +22,6 @@ var TaskDetailsComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', Boolean)
     ], TaskDetailsComponent.prototype, "editMode", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], TaskDetailsComponent.prototype, "taskModified", void 0);
     TaskDetailsComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

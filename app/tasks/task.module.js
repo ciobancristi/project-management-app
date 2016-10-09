@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var task_uspert_component_1 = require('./task-uspert.component');
 var task_details_component_1 = require('./task-details.component');
 var core_1 = require('@angular/core');
 var shared_module_1 = require('../shared/shared.module');
@@ -20,7 +21,7 @@ var TaskModule = (function () {
         core_1.NgModule({
             imports: [shared_module_1.SharedModule, data_module_1.DataModule],
             exports: [task_list_component_1.TaskListComponent],
-            declarations: [task_list_component_1.TaskListComponent, task_details_component_1.TaskDetailsComponent],
+            declarations: [task_list_component_1.TaskListComponent, task_details_component_1.TaskDetailsComponent, task_uspert_component_1.TaskUpsertComponent],
             providers: [],
         }), 
         __metadata('design:paramtypes', [])

@@ -6,16 +6,11 @@
     <accordion [closeOthers]="true">
         <accordion-group *ngFor="let task of tasks" [heading]="task.name" (click)="onSelect(task)">
             <task-details [task]="selectedTask" [editMode]="task.edit"></task-details>
-            <div *ngIf="!editMode" class="col-xs-12">
-                <button class="btn btn-default" (click)="editTask(task)"><span class="fa fa-pencil" aria-hidden="true"></span> Edit</button>
-            </div>
+
         </accordion-group>
     </accordion>
 </div>
-<div style="margin-top:10px">
-    <button class="btn btn-primary" (click)="addTask()">Add Task</button>
-</div>
-<div>
-    <task-details [task]="newTask" [editMode]="true" (taskModified)="taskModified($event)">
-    </task-details>
+
+<div style="margin-top:10px;">
+    <task-upsert [heading]="'Add new task'" [buttonText]="'Add Task'" [task]="newTask" (taskModified)="taskModified($event)"></task-upsert>
 </div>

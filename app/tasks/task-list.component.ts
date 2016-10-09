@@ -15,24 +15,28 @@ export class TaskListComponent implements OnInit {
     private selectedTask: any;
     private editMode: boolean;
 
-    constructor() { }
-
     ngOnInit() {
-
+        this.newTask = new Task();
     }
 
     addTask() {
         this.newTask = new Task;
-        this.editMode = false;
     }
 
-    taskModified(newTask: Task) {
-        this.tasks.push(newTask);
+    taskModified(task: Task) {
+        if (!task._id) {
+            this.tasks.push(task);
+        } else {
+            let indexOfTaskToEdit = this.tasks.findIndex((item) => {
+                return task._id === item._id;
+            });
+            if (indexOfTaskToEdit > -1) this.tasks[indexOfTaskToEdit] = task;
+        }
         this.taskModifiedEvent.emit();
     }
 
     editTask(task: any) {
-        task.edit = true;
+        //task.edit = true;
     }
 
     onSelect(task: any) {

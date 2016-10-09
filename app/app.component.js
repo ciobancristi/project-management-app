@@ -10,7 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var AppComponent = (function () {
-    function AppComponent() {
+    //parent elem reference for ng2-bootrstrap modal
+    function AppComponent(viewContainerRef) {
+        this.viewContainerRef = viewContainerRef;
     }
     AppComponent = __decorate([
         core_1.Component({
@@ -18,7 +20,7 @@ var AppComponent = (function () {
             templateUrl: 'app/app.component.html',
             styleUrls: ['app/app.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [core_1.ViewContainerRef])
     ], AppComponent);
     return AppComponent;
 }());
