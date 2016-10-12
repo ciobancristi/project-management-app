@@ -20,6 +20,41 @@ var ProjectDataService = (function (_super) {
     function ProjectDataService() {
         _super.call(this, "projects", "project");
     }
+    ProjectDataService.prototype.addTask = function (project, task) {
+        var currentDate = new Date();
+        task.created = currentDate;
+        task.edited = currentDate;
+        task.loggedHours = 0;
+        //todo get default status from db
+        task.status = 'Active';
+        task._id = this.createTaskId();
+        project.tasks.push(task);
+        this.update(project);
+    };
+    ProjectDataService.prototype.updateTask = function (project, task) {
+        var projectTasks = project.tasks;
+        var indexOfTaskToEdit = this.getTaskIndex(projectTasks, task._id);
+        if (indexOfTaskToEdit > 0) {
+            task.edited = new Date();
+            projectTasks[indexOfTaskToEdit] = task;
+            //todo log error
+            this.update(project);
+        }
+    };
+    ProjectDataService.prototype.deleteTask = function (project, taskId) {
+        var indexOfTaskToDelete = this.getTaskIndex(project.tasks, taskId);
+        project.tasks.splice(indexOfTaskToDelete);
+        this.update(project);
+    };
+    ProjectDataService.prototype.getTaskIndex = function (projectTasks, taskId) {
+        var taskIndex = projectTasks.findIndex(function (item) {
+            return taskId === item._id;
+        });
+        return taskIndex;
+    };
+    ProjectDataService.prototype.createTaskId = function () {
+        return 'task_' + new Date().getTime();
+    };
     ProjectDataService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [])

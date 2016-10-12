@@ -18,9 +18,10 @@ export class ProjectListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.projectService.getAll() 
+        this.projectService.getAll()
             .then((p: Project[]) => {
-                this.projects = p})
+                this.projects = p
+            })
             .catch((err: any) => console.error("error getting all projects"));
     }
 
@@ -33,10 +34,11 @@ export class ProjectListComponent implements OnInit {
         this.selectedProject = project;
     }
 
-    taskModified() {
-        this.projectService.update(this.selectedProject)
-            .catch((err: any) => {
-                console.error(err);
-            });
+    taskModified(task: Task) {
+        if (task._id) {
+            this.projectService.updateTask(this.selectedProject, task);
+        } else {
+            this.projectService.addTask(this.selectedProject, task);
+        }
     }
 }

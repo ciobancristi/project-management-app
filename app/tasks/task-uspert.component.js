@@ -17,7 +17,7 @@ var TaskUpsertComponent = (function () {
     }
     TaskUpsertComponent.prototype.ngOnInit = function () {
         //TODO: get data from service
-        this.statuses = ['In Progress', 'Finished'];
+        this.statuses = ['Active', 'In Progress', 'Finished'];
         this.priorities = ['Critical', 'High', 'Normal', 'Low'];
     };
     TaskUpsertComponent.prototype.showModal = function () {
@@ -32,17 +32,8 @@ var TaskUpsertComponent = (function () {
     };
     //todo: check deadline date
     TaskUpsertComponent.prototype.save = function () {
-        this.setDates();
         this.taskModified.emit(this.taskToModify);
         this.hideModal();
-    };
-    TaskUpsertComponent.prototype.setDates = function () {
-        var currentDate = new Date();
-        if (!this.taskToModify.created)
-            this.taskToModify.created = currentDate;
-        this.taskToModify.edited = currentDate;
-    };
-    TaskUpsertComponent.prototype.onHide = function () {
     };
     __decorate([
         core_1.ViewChild('taskModal'), 

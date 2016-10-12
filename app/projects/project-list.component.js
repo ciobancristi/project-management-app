@@ -32,11 +32,13 @@ var ProjectListComponent = (function () {
             project.tasks = new Array();
         this.selectedProject = project;
     };
-    ProjectListComponent.prototype.taskModified = function () {
-        this.projectService.update(this.selectedProject)
-            .catch(function (err) {
-            console.error(err);
-        });
+    ProjectListComponent.prototype.taskModified = function (task) {
+        if (task._id) {
+            this.projectService.updateTask(this.selectedProject, task);
+        }
+        else {
+            this.projectService.addTask(this.selectedProject, task);
+        }
     };
     ProjectListComponent = __decorate([
         core_1.Component({

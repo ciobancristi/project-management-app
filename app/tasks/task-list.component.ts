@@ -1,3 +1,4 @@
+import {ProjectDataService} from '../data/project-data.service';
 import {TaskDataService} from '../data/task-data.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
@@ -15,6 +16,8 @@ export class TaskListComponent implements OnInit {
     private selectedTask: any;
     private editMode: boolean;
 
+    constructor(private projectDataService: ProjectDataService){}
+
     ngOnInit() {
         this.newTask = new Task();
     }
@@ -24,15 +27,7 @@ export class TaskListComponent implements OnInit {
     }
 
     taskModified(task: Task) {
-        if (!task._id) {
-            this.tasks.push(task);
-        } else {
-            let indexOfTaskToEdit = this.tasks.findIndex((item) => {
-                return task._id === item._id;
-            });
-            if (indexOfTaskToEdit > -1) this.tasks[indexOfTaskToEdit] = task;
-        }
-        this.taskModifiedEvent.emit();
+        this.taskModifiedEvent.emit(task);
     }
 
     editTask(task: any) {

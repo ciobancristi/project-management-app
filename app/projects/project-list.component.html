@@ -21,9 +21,10 @@
         </section>
     </div>
     <div class="col-xs-7" *ngIf="selectedProject">
-        <task-list [tasks]="selectedProject.tasks" (taskModifiedEvent)="taskModified()"></task-list>
+        <task-list [tasks]="selectedProject.tasks" (taskModifiedEvent)="taskModified($event)"></task-list>
     </div>
 </div>
 <div class="row" style="margin-top:25px;">
     <button class="btn btn-primary" (click)="goToProject('newProject')">Add project</button>
 </div>
+<pre>{{ selectedProject | json}}</pre>

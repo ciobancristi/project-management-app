@@ -19,9 +19,9 @@ export class TaskUpsertComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { 
+    ngOnInit() {
         //TODO: get data from service
-        this.statuses = ['In Progress', 'Finished'];
+        this.statuses = ['Active', 'In Progress', 'Finished'];
         this.priorities = ['Critical', 'High', 'Normal', 'Low'];
 
     }
@@ -35,23 +35,13 @@ export class TaskUpsertComponent implements OnInit {
         this.taskModal.hide();
     }
 
-    cancel(){
+    cancel() {
         this.hideModal();
     }
 
     //todo: check deadline date
-    save(){
-        this.setDates();
+    save() {
         this.taskModified.emit(this.taskToModify);
         this.hideModal();
-    }
-
-    setDates(){
-        let currentDate = new Date();
-        if(!this.taskToModify.created) this.taskToModify.created = currentDate;
-        this.taskToModify.edited = currentDate; 
-    }
-
-    onHide(){
     }
 }
