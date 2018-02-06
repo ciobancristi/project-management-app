@@ -24,6 +24,8 @@ import { MaterialModule } from 'app/shared/material.module';
 import { ProjectEditDialogComponent } from './components/project-edit-dialog/project-edit-dialog.component';
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
+import { NgDragDropModule } from 'ng-drag-drop';
+import { DraggableExampleComponent } from './components/draggable-example/draggable-example.component';
 
 
 @NgModule({
@@ -36,7 +38,8 @@ import { TaskDialogComponent } from './components/task-dialog/task-dialog.compon
     ProjectEditDialogComponent,
     ProjectEditDialogComponent,
     TaskTableComponent,
-    TaskDialogComponent
+    TaskDialogComponent,
+    DraggableExampleComponent
   ],
   entryComponents:[
     ProjectEditDialogComponent,
@@ -50,7 +53,8 @@ import { TaskDialogComponent } from './components/task-dialog/task-dialog.compon
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    MaterialModule
+    MaterialModule,
+    NgDragDropModule.forRoot()
   ],
   providers: [ElectronService, ProjectService],
   bootstrap: [AppComponent]

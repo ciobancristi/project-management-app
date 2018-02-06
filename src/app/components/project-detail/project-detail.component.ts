@@ -12,6 +12,7 @@ import { Task } from 'app/models/task';
 })
 export class ProjectDetailComponent implements OnInit {
   project: Project;
+  columns: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,14 +27,32 @@ export class ProjectDetailComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
 
     this.projectsService.getProject(id)
-      .subscribe(project => this.project = project);
+      .subscribe(project => {
+        this.project = project;
+        this.initColumns();
+      });
   }
 
   goBack(): void {
     this.location.back();
   }
 
-  getTasksByStatus(statusId): Task[] {
+  getTasksByStatus(statusId: number): Task[] {
     return this.project.tasks.filter(t => t.status.id === statusId);
   }
+
+  private initColumns(): any {
+    this.columns = [];
+    this.project.statuses.forEach((status) => {
+      var statusId = status.id;
+      var tasks = this.getTasksByStatus(statusId);
+      this.columns[statusId] = tasks;
+    })
+  }
+
+  onDrop(e: any) {
+    console.log(e.dragData);
+    
+  }
+
 }
