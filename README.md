@@ -24,7 +24,7 @@ With this sample, you can :
 Clone this repository locally :
 
 ``` bash
-git clone 
+git clone https://github.com/ciobancristi/project-management-app.git
 ```
 
 Install dependencies with npm :
@@ -100,3 +100,4 @@ You can run tests with the command lines below :
 - **in another terminal window** -> Then, launch Protractor (E2E framework): `npm run e2e`
 
 # Contributors 
+This project started from the the angular-electron template made by maximegris https://github.com/maximegris/angular-electron
