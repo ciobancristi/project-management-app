@@ -1,0 +1,21 @@
+.main {
+    height: 100%;
+    background-color: #23272A;
+    color:#FFFFFF;
+  
+    .sidebar{
+      background-color: #F4F5F7;
+      color: #42526E;
+      float: left;
+      height: 100%;
+      width: 7%;
+    }
+
+    .main-content{
+        background-color: #2C2F33;
+        height: 99%;
+        border-radius: 1%;
+        width: 92.5%;
+        float: right;
+    }
+}

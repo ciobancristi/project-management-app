@@ -1,0 +1,10 @@
+<div class="project-content">
+  <div class="circle project-bubble">
+    <div class="circle-add" (click)="openDialog()">+</div>
+  </div>
+  <div *ngFor="let project of projects" class="circle project-bubble">
+    <div routerLink="project/{{project.id}}" class="circle-content">
+      {{project.name}}
+    </div>
+  </div>
+</div>

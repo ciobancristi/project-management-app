@@ -1,0 +1,19 @@
+<h3 style="text-align: center">Create a project</h3>
+<br>
+<form class="full-width">
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Project Name" [(ngModel)]="project.name" name="name" required>
+  </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <textarea matInput placeholder="Description" [(ngModel)]="project.description" name="description" rows="5" cols="50" required></textarea>
+  </mat-form-field>
+  <div class="project-dialog-buttons">
+    <div class="float-left">
+      <button mat-raised-button (click)="closeDialog()">Cancel</button>
+    </div>
+    <div class="float-right">
+      <button mat-raised-button color="primary" (click)="submit()">Submit</button>
+    </div>
+  </div>
+</form>

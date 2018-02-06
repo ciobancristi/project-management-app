@@ -1,0 +1,33 @@
+<div *ngIf="project" class="project-content">
+  <div class="project-section">
+    <h2>
+      {{project.name}}
+    </h2>
+    <p>Project description: {{project.description}}</p>
+
+    <button (click)="goBack()">Go back</button>
+
+  </div>
+
+  <div class="task-section">
+    <div *ngFor="let status of project.statuses" [ngStyle]="{'width.%': (100/project.statuses.length).toFixed(2) - 1}" class="task-column">
+      <div class="task-column-header">
+        {{status.name}}
+      </div>
+      <div class="task-column-content">
+        <mat-card class="task-card" *ngFor="let task of getTasksByStatus(status.id)">
+          <mat-card-header>
+            <mat-card-title>{{task.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{task.description}}
+            </p>
+            <p>
+              Priority: {{task.priority}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
