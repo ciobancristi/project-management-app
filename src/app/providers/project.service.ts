@@ -42,6 +42,13 @@ export class ProjectService {
     );
   }
 
+  update(project: Project): Observable<Project>{
+    return this.http.put(this.projectsUrl, project, httpOptions).pipe(
+      tap(_ => console.log(`updated project id=${project.id}`)),
+      catchError(this.handleError<any>('updateProject'))
+    )
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 

@@ -14,8 +14,8 @@
       <div class="task-column-header">
         {{status.name}}
       </div>
-      <div class="task-column-content" droppable (onDrop)="onDrop($event )">
-        <mat-card draggable [dragData]="task" class="task-card" *ngFor="let task of getTasksByStatus(status.id)">
+      <div class="task-column-content" droppable (onDrop)="onDrop($event, status)" [dropScope]="getDropScope(status.name)">
+        <mat-card draggable [dragData]="task" [dragScope]="task.status.name" class="task-card" *ngFor="let task of getTasksByStatus(status.id)">
           <mat-card-header>
             <mat-card-title>{{task.name}}</mat-card-title>
           </mat-card-header>
@@ -25,6 +25,9 @@
             </p>
             <p>
               Priority: {{task.priority}}
+            </p>
+            <p>
+              Status: {{task.status.name}}
             </p>
           </mat-card-content>
         </mat-card>

@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { ProjectService } from 'app/providers/project.service';
 import { Project } from 'app/models/project';
 import { Task } from 'app/models/task';
+import { Status } from 'app/models/status';
 
 @Component({
   selector: 'app-project-detail',
@@ -12,7 +13,7 @@ import { Task } from 'app/models/task';
 })
 export class ProjectDetailComponent implements OnInit {
   project: Project;
-  columns: any;
+  statuses: Status[];
 
   constructor(
     private route: ActivatedRoute,
@@ -29,7 +30,7 @@ export class ProjectDetailComponent implements OnInit {
     this.projectsService.getProject(id)
       .subscribe(project => {
         this.project = project;
-        this.initColumns();
+        this.statuses = project.statuses;
       });
   }
 
@@ -41,18 +42,28 @@ export class ProjectDetailComponent implements OnInit {
     return this.project.tasks.filter(t => t.status.id === statusId);
   }
 
-  private initColumns(): any {
-    this.columns = [];
-    this.project.statuses.forEach((status) => {
-      var statusId = status.id;
-      var tasks = this.getTasksByStatus(statusId);
-      this.columns[statusId] = tasks;
-    })
+  onDrop(e: any, destinationStatus) {
+    var task = e.dragData;
+    var taskIndex = this.project.tasks.indexOf(task);
+    task.status = destinationStatus;
+    this.project.tasks[taskIndex] = task;
+    this.projectsService.update(this.project)
+      .subscribe((project) => console.log("updated", project));
   }
 
-  onDrop(e: any) {
-    console.log(e.dragData);
-    
+  getDragScope(statusName: string) {
+    var statuses = this.statuses.filter(s => s.name !== statusName);
+    var array = [];
+    statuses.forEach(s => array.push("'" + s.name.replace(/\s/g, '') + "'"));
+    return array;
+  }
+
+  getDropScope(statusName: string) {
+    //*Optional* TODO: enable drop from Done only to TO DO
+    var statuses = this.statuses.filter(s => s.name !== statusName);
+    var array = [];
+    statuses.forEach(s => array.push(s.name));
+    return array;
   }
 
 }

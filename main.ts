@@ -20,21 +20,24 @@ function createWindow() {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: size.width,
-    height: size.height
+    width: 1200,
+    height: 800,
+    minHeight: 600,
+    minWidth: 940,
   });
 
   // and load the index.html of the app.
   win.loadURL(url.format({
     protocol: 'file:',
     pathname: path.join(__dirname, '/index.html'),
-    slashes:  true
+    slashes: true
   }));
 
   // Open the DevTools.
-  if (serve) {
-    win.webContents.openDevTools();
-  }
+  //if (serve) {
+
+  win.webContents.openDevTools();
+  //}
 
   // Emitted when the window is closed.
   win.on('closed', () => {
