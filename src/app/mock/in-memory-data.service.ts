@@ -87,7 +87,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 description: "proj 1 Description",
                 created: new Date(),
                 modified: new Date(),
-                tasks: this.tasks.concat(this.tasks2),
+                tasks: this.tasks,
                 isFinished: false,
                 statuses: this.statuses
             },
@@ -96,7 +96,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 description: "proj 2 Description",
                 created: new Date(),
                 modified: new Date(),
-                tasks: this.tasks2.concat(this.tasks2),
+                tasks: this.tasks2,
                 isFinished: false,
                 statuses: this.statuses
             }

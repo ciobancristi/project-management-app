@@ -2,12 +2,14 @@
     height: 100%;
 
     .project-section{
-        width: 99.5%;
-        height: 25%;
+        width: 96.5%;
+        height: 20%;
         background-color: #F4F5F7;
         margin-bottom: 5px;
         border-radius: 1%;
         color: #5E6C84;
+        padding: 10px;
+        margin-top: 5px;
     }
 
     .task-section{
@@ -16,13 +18,15 @@
         background-color: #FFFFFF;
         border-radius: 1%;
         color: #5E6C84;
+        max-height: 540px;
+        overflow-y: auto;
 
         .task-column{
-            height: 98%;
+            height: auto;
             float: left;
             margin: 0.5%;
             border-radius: 6px;
-
+            
             .task-column-header{
                 height: 28px;
                 border-radius: 6px;
@@ -38,6 +42,7 @@
                 background-color: #F4F5F7;
                 border-radius: 6px;
                 padding: 1px;
+                min-height: 170px;
             }
         }
 
@@ -79,4 +84,12 @@
 
 .drag-transit {
     border: #3500FF dashed 2px;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left {
+    float: left;
 }

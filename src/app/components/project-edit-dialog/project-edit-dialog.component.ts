@@ -26,8 +26,11 @@ export class ProjectEditDialogComponent implements OnInit {
 
   submit() {
     //TODO: validate form
-    if (!this.project.name.trim() || !this.project.description.trim())
+    if (!this.isValidField(this.project.name) 
+      || !this.isValidField(this.project.description)){
+        console.log('invalid');
       return;
+      }
 
     this.projectService.addProject(this.project)
       .subscribe(project => {
@@ -35,5 +38,12 @@ export class ProjectEditDialogComponent implements OnInit {
         this.router.navigate(['/project', project.id]);
         this.closeDialog();
       });
+  }
+
+  isValidField(field: string): boolean{
+    if(!field || !field.trim() || field.length < 3)
+      return false;
+
+    return true;
   }
 }

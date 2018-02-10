@@ -31,8 +31,7 @@ export class ProjectsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //this.animal = result;
+      console.log('The edit project dialog was closed');
     });
   }
 }

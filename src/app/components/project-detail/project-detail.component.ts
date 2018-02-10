@@ -5,6 +5,9 @@ import { ProjectService } from 'app/providers/project.service';
 import { Project } from 'app/models/project';
 import { Task } from 'app/models/task';
 import { Status } from 'app/models/status';
+import { MatDialog } from '@angular/material';
+import { TaskEditDialogComponent } from '../task-edit-dialog/task-edit-dialog.component';
+import { TaskDialogComponent } from '../task-dialog/task-dialog.component';
 
 @Component({
   selector: 'app-project-detail',
@@ -18,7 +21,8 @@ export class ProjectDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private projectsService: ProjectService) { }
+    private projectsService: ProjectService,
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this.getProject();
@@ -66,4 +70,26 @@ export class ProjectDetailComponent implements OnInit {
     return array;
   }
 
+  openEditTaskDialog() {
+    let dialogRef = this.dialog.open(TaskEditDialogComponent, {
+      width: '500px',
+      height: '450px',
+      data: this.project
+    })
+
+    dialogRef.afterClosed()
+      .subscribe(result => console.log('Task Edit Dialog was closed'));
+  }
+
+  openTaskDialog(task: Task) {
+    let dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '550px',
+      height: '500px',
+      data: task
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Task dialog was closed');
+    });
+  }
 }

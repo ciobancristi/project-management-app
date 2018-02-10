@@ -25,8 +25,7 @@ import { ProjectEditDialogComponent } from './components/project-edit-dialog/pro
 import { TaskTableComponent } from './components/task-table/task-table.component';
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
 import { NgDragDropModule } from 'ng-drag-drop';
-import { DraggableExampleComponent } from './components/draggable-example/draggable-example.component';
-
+import { TaskEditDialogComponent } from './components/task-edit-dialog/task-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,11 +38,12 @@ import { DraggableExampleComponent } from './components/draggable-example/dragga
     ProjectEditDialogComponent,
     TaskTableComponent,
     TaskDialogComponent,
-    DraggableExampleComponent
+    TaskEditDialogComponent
   ],
   entryComponents:[
     ProjectEditDialogComponent,
-    TaskDialogComponent
+    TaskDialogComponent,
+    TaskEditDialogComponent
   ],
   imports: [
     BrowserModule,

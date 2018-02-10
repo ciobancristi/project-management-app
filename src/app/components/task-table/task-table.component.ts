@@ -3,6 +3,7 @@ import { ProjectService } from 'app/providers/project.service';
 import { Task } from 'app/models/task';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog } from '@angular/material';
 import { TaskDialogComponent } from 'app/components/task-dialog/task-dialog.component';
+import { Project } from '../../models/project';
 
 @Component({
   selector: 'app-task-table',
@@ -11,6 +12,7 @@ import { TaskDialogComponent } from 'app/components/task-dialog/task-dialog.comp
 })
 export class TaskTableComponent implements OnInit {
   tasks: Task[];
+  projects: Project[];
   displayedColumns = ['id', 'name', 'description', 'status.name', 'priority'];
   dataSource: any;
 
@@ -24,6 +26,7 @@ export class TaskTableComponent implements OnInit {
     this.tasks = [];
     this.projectService.getProjects()
       .subscribe(projects => {
+        this.projects = projects;
         projects.map(p => this.tasks = this.tasks.concat(p.tasks));
         this.dataSource = new MatTableDataSource(this.tasks);
         this.dataSource.sort = this.sort;
@@ -37,24 +40,16 @@ export class TaskTableComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
-  openTaskModal(task: Task){
+  openTaskModal(task: Task) {
+    var project = this.projects.find(p => p.tasks.indexOf(task) !== -1);
     let dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '550px',
       height: '500px',
-      data: task
+      data: { task, project }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('Task dialog was closed');
     });
   }
-  
-  /**
-   * Set the sort after the view init since this component will
-   * be able to query its view for the initialized sort.
-   */
-  ngAfterViewInit() {
-    //this.dataSource.sort = this.sort;
-  }
-
 }

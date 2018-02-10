@@ -3,25 +3,31 @@
     max-height: 300px;
 }
 
-.example-container {
+.container {
     display: flex;
     flex-direction: column;
-    min-width: 300px;
+    min-width: 350px;
     padding: 20px;
 }
 
-.example-header {
-background: #fff;
-min-height: 64px;
-padding: 8px 24px 0;
+.header {
+    background: #fff;
+    min-height: 64px;
+    padding: 6px 20px 0;
 }
 
 .mat-form-field {
-font-size: 14px;
-width: 100%;
-color: black;
+    font-size: 14px;
+    width: 100%;
+    color: black;
 }
 
 .pointer {
     cursor: pointer;
+}
+
+.center-text{
+    text-align: center;
+    color: black;
+    margin: 13px;
 }

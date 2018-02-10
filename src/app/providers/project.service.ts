@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 
 import { Project } from 'app/models/project';
 import { Task } from 'app/models/task';
+import { Status } from 'app/models/status';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,6 +34,7 @@ export class ProjectService {
   addProject(project: Project): Observable<Project> {
     // init default props
     // TODO: change to init default props on server
+    project.statuses = this.statuses;
     project.created = new Date();
     project.modified = project.created;
     project.isFinished = false;
@@ -42,11 +44,22 @@ export class ProjectService {
     );
   }
 
-  update(project: Project): Observable<Project>{
+  update(project: Project): Observable<Project> {
+    // TODO: update modified on server
+    project.modified = new Date();
     return this.http.put(this.projectsUrl, project, httpOptions).pipe(
       tap(_ => console.log(`updated project id=${project.id}`)),
       catchError(this.handleError<any>('updateProject'))
     )
+  }
+
+  addTask(task: Task, project: Project): Observable<Project>{
+    // set default values on server
+    task.created = new Date();
+    task.modified = task.created;
+    task.status = this.statuses[0];
+    project.tasks.push(task);
+    return this.update(project);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -62,4 +75,22 @@ export class ProjectService {
       return of(result as T);
     };
   }
+
+  statuses: Status[] = [
+    {
+      id: 1,
+      name: "To do",
+      order: 1
+    },
+    {
+      id: 2,
+      name: "In progress",
+      order: 2
+    },
+    {
+      id: 3,
+      name: "Done",
+      order: 3
+    }
+  ]
 }

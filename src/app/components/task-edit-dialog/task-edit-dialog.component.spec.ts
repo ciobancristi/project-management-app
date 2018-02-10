@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DraggableExampleComponent } from './draggable-example.component';
+import { TaskEditDialogComponent } from './task-edit-dialog.component';
 
-describe('DraggableExampleComponent', () => {
-  let component: DraggableExampleComponent;
-  let fixture: ComponentFixture<DraggableExampleComponent>;
+describe('TaskEditDialogComponent', () => {
+  let component: TaskEditDialogComponent;
+  let fixture: ComponentFixture<TaskEditDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DraggableExampleComponent ]
+      declarations: [ TaskEditDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DraggableExampleComponent);
+    fixture = TestBed.createComponent(TaskEditDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

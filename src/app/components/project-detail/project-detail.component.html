@@ -5,8 +5,10 @@
     </h2>
     <p>Project description: {{project.description}}</p>
 
-    <button (click)="goBack()">Go back</button>
-
+    <button mat-raised-button (click)="goBack()">Go back</button>
+    <div class="float-right">
+      <button mat-raised-button color="primary" (click)="openEditTaskDialog()">Add Task</button>
+    </div>
   </div>
 
   <div class="task-section">
@@ -15,7 +17,9 @@
         {{status.name}}
       </div>
       <div class="task-column-content" droppable (onDrop)="onDrop($event, status)" [dropScope]="getDropScope(status.name)">
-        <mat-card draggable [dragData]="task" [dragScope]="task.status.name" class="task-card" *ngFor="let task of getTasksByStatus(status.id)">
+        <mat-card draggable [dragData]="task" [dragScope]="task.status.name" 
+            class="task-card" *ngFor="let task of getTasksByStatus(status.id)"
+            (click)="openTaskDialog(task)">
           <mat-card-header>
             <mat-card-title>{{task.name}}</mat-card-title>
           </mat-card-header>
