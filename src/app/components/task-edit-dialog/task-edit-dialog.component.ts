@@ -14,10 +14,17 @@ import { Project } from '../../models/project';
 export class TaskEditDialogComponent implements OnInit {
   task: Task;
   priorities: string[];
+  projects: Project[];
+  projectNotProvided: boolean = false;
 
   constructor(public dialogRef: MatDialogRef<TaskEditDialogComponent>,
     private projectService: ProjectService,
     @Inject(MAT_DIALOG_DATA) public project: Project) {
+      if(!project){
+        this.projectNotProvided = true;
+        this.projectService.getProjects()
+          .subscribe(projects => this.projects = projects);
+      }
   }
 
   ngOnInit() {
@@ -31,11 +38,11 @@ export class TaskEditDialogComponent implements OnInit {
       || !this.isValidField(this.task.description)
       || !this.isValidField(this.task.priority))
       return;
+    //TODO: validate selected project
 
     this.projectService.addTask(this.task, this.project)
       .subscribe(project => {
         this.closeDialog();
-        //this.project.tasks.push(this.task);
       })
   }
 

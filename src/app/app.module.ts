@@ -26,6 +26,7 @@ import { TaskTableComponent } from './components/task-table/task-table.component
 import { TaskDialogComponent } from './components/task-dialog/task-dialog.component';
 import { NgDragDropModule } from 'ng-drag-drop';
 import { TaskEditDialogComponent } from './components/task-edit-dialog/task-edit-dialog.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TaskEditDialogComponent } from './components/task-edit-dialog/task-edit
     ProjectEditDialogComponent,
     TaskTableComponent,
     TaskDialogComponent,
-    TaskEditDialogComponent
+    TaskEditDialogComponent,
+    SideNavComponent
   ],
   entryComponents:[
     ProjectEditDialogComponent,

@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { ProjectService } from 'app/providers/project.service';
 import { Task } from 'app/models/task';
 import { Project } from '../../models/project';
+import { Router } from '@angular/router';
+import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-task-dialog',
@@ -15,7 +17,9 @@ export class TaskDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<TaskDialogComponent>,
     private projectService: ProjectService,
+    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any) {
+      this.router = router;
       this.task = data.task;
       this.project = data.project;
      }
@@ -31,4 +35,8 @@ export class TaskDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  goToProject(projectId: number):void {
+    this.closeDialog();
+    this.router.navigateByUrl(`project/${projectId}`);
+  }
 }

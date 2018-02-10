@@ -85,7 +85,7 @@ export class ProjectDetailComponent implements OnInit {
     let dialogRef = this.dialog.open(TaskDialogComponent, {
       width: '550px',
       height: '500px',
-      data: task
+      data: { task, project: this.project }
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,6 +1,14 @@
 <h3 style="text-align: center">Create a Task</h3>
 <br>
 <form class="full-width">
+  <mat-form-field *ngIf="projectNotProvided">
+    <mat-select placeholder="Project" required [(ngModel)]="project" name="priority">
+      <mat-option *ngFor="let project of projects" [value]="project">
+        {{project.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
   <mat-form-field class="full-width">
     <input matInput placeholder="Task Name" [(ngModel)]="task.name" name="name" required>
   </mat-form-field>
@@ -25,4 +33,4 @@
       <button mat-raised-button color="primary" (click)="submit()">Submit</button>
     </div>
   </div>
-</form> 
+</form>

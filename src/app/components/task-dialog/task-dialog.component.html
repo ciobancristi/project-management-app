@@ -1,6 +1,6 @@
 <h3 style="text-align: center">{{task.name}}</h3>
 <br>
-<p>Project Name: {{project.name}}</p>
+<p>Project Name: <a mat-button (click)="goToProject(project.id)">{{project.name}}</a> </p>
 <p>Description: {{task.description}}</p>
 <p>Priority: {{task.priority}}</p>
 <p>Status: {{task.status.name}}</p>
