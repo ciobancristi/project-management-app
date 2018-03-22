@@ -4,6 +4,8 @@
 
 To be updated!! 
 
+TODO: update readme
+
 Bootstrap and package your project with Angular 5(+) and Electron (Typescript + SASS + Hot Reload) for creating Desktop applications.
 
 Currently runs with:
@@ -83,6 +85,7 @@ If you need to use NodeJS native libraries, you **MUST** add it manually in the 
     ...
   },
 ```
+     
 
 Notice that all NodeJS v7 native libs are already added in this sample. Feel free to remove those you don't need.
 
